@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    <h1>書籍名</h1>
+    <h1>書籍名！</h1>
     <img src="" alt="書籍の画像" width="" height="">
 
 
