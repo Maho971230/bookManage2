@@ -21,8 +21,6 @@ return view('reg.create');
         'price' => 'required|numeric|min:0',
         ]);
         return view('reg.check', $validated);
-        
-        redirect('top');
     }
 
 public function store(Request $req)
