@@ -6,5 +6,3 @@ use App\Http\Controllers\RegContrtoller;
 Route::get('/', function () {
     return view('top');
 });
-
-

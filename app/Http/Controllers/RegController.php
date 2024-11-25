@@ -10,7 +10,7 @@ class RegController extends Controller
     public function create(Request $req)
     {
         if ($req->isMethod('get')) {
-            return view('create');
+            return view('reg.create');
         } elseif ($req->isMethod('post')) {
             $validated = $req->validate([
                 'isbn' => 'required|unique:books,isbn',
