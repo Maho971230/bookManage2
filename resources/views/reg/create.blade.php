@@ -9,7 +9,7 @@
     <script src="js/getIsbn.js" defer></script>
 </head>
 <body>
-    <h1>ISBNを入力してください</h1><a href="/top">トップページに戻る</a>
+    <h1>ISBNを入力してください </h1><a href="/top">トップページに戻る</a>
     <form action="/reg/store" method="post">
         <input type="text" name="isbn" required>
         <button type="button" class="btn btn-primary mb-8" data-toggle="modal" data-target="#register">ボタンで開く</button>
