@@ -26,4 +26,4 @@ Route::get('/searchTitle', [SearchController::class, 'searchTitle'])->name('sear
 Route::post('/searchList', [SearchController::class, 'searchList'])->name('search.searchList');
 
 // 書籍詳細ページを表示
-Route::get('books/{id}', [BookController::class, 'show'])->name('books.show');
+Route::get('book/{id}', [BookController::class, 'book'])->name('book');
