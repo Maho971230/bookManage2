@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedbigInteger('book_id');
+            $table->text('content');
+            $table->integer('rating')->check('rating BETWEEN 0 AND 5');
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('book_id')->references('id')->on('books');
         });
     }
 
