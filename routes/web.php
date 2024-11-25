@@ -23,3 +23,6 @@ Route::get('/searchWriter', [SearchController::class, 'searchWriter'])->name('se
 Route::get('/searchTitle', [SearchController::class, 'searchTitle'])->name('search.searchTitle');
 //検索結果を表示
 Route::post('/searchList', [SearchController::class, 'searchList'])->name('search.searchList');
+
+// 書籍詳細ページを表示
+Route::get('books/{id}', [BookController::class, 'show'])->name('books.show');
