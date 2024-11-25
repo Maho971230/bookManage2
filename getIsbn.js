@@ -20,14 +20,11 @@ document.getElementById("btnCheck").addEventListener("click", async (e) => {
         const bookData = data[0].summary;
         document.querySelector('input[name="title"]').value =
             bookData.title || ""; // 書籍名
-        document.querySelector('input[name="author"]').value =
-            bookData.author || ""; // 著者名
+        document.querySelector('input[name="writer"]').value =
+            bookData.writer || ""; // 著者名
         document.querySelector('input[name="publisher"]').value =
             bookData.publisher || ""; // 出版社名
     } else {
         alert("ISBN情報が見つかりませんでした。");
     }
-
 });
-
-
