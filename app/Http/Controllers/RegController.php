@@ -7,7 +7,10 @@ use App\Models\Book;
 
 class RegController extends Controller
 {
-    public function create() {}
+    public function create()
+    {
+        return view('create');
+    }
 
     public function store() {}
 
