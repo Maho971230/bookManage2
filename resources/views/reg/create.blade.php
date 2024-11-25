@@ -24,7 +24,6 @@
                                 著者名{{}}
                                 出版社名{{}}
                                 価格{{}}
-                                
                         </label>
                     </div>
                     <div class="modal-footer">
