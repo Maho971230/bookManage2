@@ -8,5 +8,3 @@ Route::get('/', function () {
 });
 
 Route::get('/create',[RegController::class,'create']);
-
-Route::
