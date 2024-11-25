@@ -25,11 +25,15 @@ class RegController extends Controller
 
     public function store(Request $req)
     {
-        $book = new Book();
-        $book->id = $req;
+        Book::create([
+            'isbn' => $req->isbn,
+            'title' => $req->title,
+            'writer' => $req->author,
+            'publisher' => $req->publisher,
+            'price' => $req->price,
+        ]);
 
-        // データベースに保存
-        // Book::create($validated);
+        return view('reg.store',);
     }
 
     public function list()
