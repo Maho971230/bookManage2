@@ -7,5 +7,5 @@ Route::get('/', function () {
     return view('top');
 });
 
-// Route::post('/',[])
+// Route::post('/',[]
 Route::get('/create',[RegController::class,'create']);
