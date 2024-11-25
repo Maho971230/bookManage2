@@ -6,6 +6,8 @@
     <title>書籍登録</title>
 </head>
 <body>
-    
+    <h1>登録内容を入力してください</h1><form action="/top" mathod="post">
+        
+    </form>
 </body>
 </html>
