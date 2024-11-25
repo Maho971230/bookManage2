@@ -6,5 +6,9 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    
+    public function book($id)
+    {
+        $book = Book::find($id);
+        return view('book', ['book' => $book]);
+    }
 }
