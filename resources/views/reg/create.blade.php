@@ -12,7 +12,27 @@
     <h1>ISBNを入力してください</h1><a href="/top">トップページに戻る</a>
     <form action="/reg/store" method="post">
         <input type="text" name="isbn" required>
-        <button type="button" class="btn btn-primary mb-8" data-toggle="modal" data-target="#register">ボタンで開く</button>
+        <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><div class="modal-title" id="myModalLabel">こちらの内容で登録してもよろしいですか？</div></h4>
+                    </div>
+                    <div class="modal-body">
+                        <label> ISBN{{}}
+                                書籍名{{}}
+                                著者名{{}}
+                                出版社名{{}}
+                                価格{{}}
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                        <button type="button" class="btn btn-danger">登録</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 </html>
