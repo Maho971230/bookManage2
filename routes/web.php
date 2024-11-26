@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::get('/create', [RegController::class, 'create']);
+
