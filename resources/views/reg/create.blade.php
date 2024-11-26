@@ -22,6 +22,7 @@
             <input type="submit" value="検索" class="btn btn-primary">
         </form>
         <script>
+
             document.getElementById("btnCheck").addEventListener("click", async (e) => {
     // ISBNを取得（入力フィールドから）
     const isbn = document.getElementById("isbn").value;
