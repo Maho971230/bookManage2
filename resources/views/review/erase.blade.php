@@ -13,7 +13,7 @@
   <form action="{{ route('delete') }}" method="post">
     @csrf
     <h1>確認内容</h1>
-    <input type="hidden" name="id" value="{{$value->id}}">
+    <input type="hidden" name="id" value="{{$review->id}}">
     <br />
     <p>書籍名:{{ $review->book->title }}</p>
     <br />
