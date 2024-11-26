@@ -12,6 +12,7 @@
     <h1>ISBNを入力してください</h1><a href="/top">トップページに戻る</a>
     <form action="/reg/store" method="post">
         <input type="text" name="isbn" required>
+        <input type="submit" value="検索">
         <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
