@@ -7,37 +7,37 @@ use Illuminate\Http\Request;
 class RegController extends Controller
 {
     public function create()
-{
-return view('reg.create');
-}
+    {
+        return view('reg.create');
+    }
 
     public function check(Request $req)
     {
         $validated = $req->validate([
-        'isbn' => 'required|unique:books,isbn',
-        'title' => 'required|max:255',
-        'author' => 'required|max:255',
-        'publisher' => 'required|max:255',
-        'price' => 'required|numeric|min:0',
+            'isbn' => 'required|unique:books,isbn',
+            'title' => 'required|max:255',
+            'writer' => 'required|max:255',
+            'publisher' => 'required|max:255',
+            'price' => 'required|numeric|min:0',
         ]);
-        return view('reg.check', $validated);
+
+        return view('reg.check', ['data' => $validated]);
     }
 
-public function store(Request $req)
-{
-    $book = new Book();
-    $book->id = $req;
+    public function store(Request $req)
+    {
+        $book = new Book();
+        $book->id = $req;
 
-    // データベースに保存
-    // Book::create($validated);
-}
+        // データベースに保存
+        // Book::create($validated);
+    }
 
-public function list()
-{
-    $data = [
-        'records' => Book::all()
-    ];
-    return view('list', $data);
-}
-
+    public function list()
+    {
+        $data = [
+            'records' => Book::all()
+        ];
+        return view('list', $data);
+    }
 }

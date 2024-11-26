@@ -15,12 +15,13 @@ document.getElementById("btnCheck").addEventListener("click", async (e) => {
     const data = await res.json();
 
     // ISBN情報が見つかった場合
-    if (data[0])  {
+
+    if (data[0]) {
         const bookData = data[0].summary;
         document.querySelector('input[name="title"]').value =
             bookData.title || ""; // 書籍名
-        document.querySelector('input[name="author"]').value =
-            bookData.author || ""; // 著者名
+        document.querySelector('input[name="writer"]').value =
+            bookData.writer || ""; // 著者名
         document.querySelector('input[name="publisher"]').value =
             bookData.publisher || ""; // 出版社名
     } else {

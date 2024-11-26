@@ -16,6 +16,7 @@
             <div class="bm-3">
                 <label for="isbn" class="form-label" >ISBN</label>
                 <input type="text" name="isbn" id="isbn" class="form-control" required>
+
             </div>
             <input type="submit" value="検索" class="btn btn-primary">
         </form>
