@@ -21,7 +21,7 @@ class ReviewController extends Controller
     public function postconf(Request $req)
     {
         $id = $req->input('id');
-        $review = Review::find($id);//新規登録のid値に該当するレコードを取得
+        $review = Review::find($id); //新規登録のid値に該当するレコードを取得
 
         // フォームから送られてきたデータを取得
         $content = $req->input('content');
@@ -61,15 +61,15 @@ class ReviewController extends Controller
     //レビュー編集処理
     public function edit(Request $req)
     {
-        $id=$req->input('id');
+        $id = $req->input('id');
         $record = Review::find($id);
-       if (!$record) {
-        abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
-       }
+        if (!$record) {
+            abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
+        }
 
         return view('review.edit', ['record' => $record]);
-        }
-    
+    }
+
     public function repost(Request $req)
     {
         // idをリクエストから取得
@@ -106,12 +106,12 @@ class ReviewController extends Controller
         //     'newRating' => $newRating
         // ]);
     }
-    
+
 
     //レビュー編集完了
     public function update(Request $req)
     {
-        $id=$req->input('id');
+        $id = $req->input('id');
         //修正対象のid値に該当するレコードを取得
         $review = Review::find($id);
         if (!$review) {
@@ -129,8 +129,8 @@ class ReviewController extends Controller
         }
         //モデルのデータをレーブルに保存
         $review->save();
-        
-        return view('review.update',['review'=>$review]);
+
+        return view('review.update', ['review' => $review]);
     }
 
     //レビュー削除処理
@@ -138,18 +138,18 @@ class ReviewController extends Controller
     {
         //削除対象のid値を取得
         $id = $req->input('id');
-        $review=Review::find($id);
+        $review = Review::find($id);
         if (!$review) {
             // 見つからない場合は404エラーを返す
             abort(404, 'レビューが見つかりません。');
         }
-        return view('review.erase', ['review'=>$review]);
+        return view('review.erase', ['review' => $review]);
     }
 
     //レビュー削除完了
     public function delete(Request $req)
     {
-        $id=$req->input('id');
+        $id = $req->input('id');
         //削除対象のdi値に該当するレコードを取得
         $review = Review::find($id);
         if (!$review) {
@@ -158,6 +158,6 @@ class ReviewController extends Controller
         }
         //データを削除するメソッドを実行
         $review->delete();
-        return view('review.delete', ['review'=>$review]);
+        return view('review.delete', ['review' => $review]);
     }
 }
