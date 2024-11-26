@@ -42,4 +42,3 @@ public function list()
     return view('list', $data);
 }
 
-}
