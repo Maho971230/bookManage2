@@ -10,7 +10,7 @@
 <body>
     <div>
     <h1>社員名とパスワードを入力してください</h1>
-    <form action="{{route('loginCheck')}}" method="get">
+    <form action="{{route('loginCheck')}}" method="post">
         @csrf
         社員名　　<input type="text" name="name" required><br>
         パスワード <input type="password" name="password" id="password" required>

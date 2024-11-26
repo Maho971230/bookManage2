@@ -13,9 +13,9 @@ Route::get('/', function () {
 });
 
 //ログイン画面の表示
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 //ログイン処理
-Route::get('/login', [LoginController::class, 'loginCheck'])->name('loginCheck');
+Route::post('/login', [LoginController::class, 'loginCheck'])->name('loginCheck');
 //ログアウト
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
