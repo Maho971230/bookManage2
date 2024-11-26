@@ -47,13 +47,13 @@ class ReviewController extends Controller
     //レビュー編集処理
     public function edit(Request $req)
     {
-        //修正対象データのid値を取得
-        $id = $req->id;
-        $data = [
-            //指定したid値に該当するレコードを連想配列に保存
-            'record' => Review::find($id)
-        ];
-        return view('review.edit', $data);
+        $record = Review::find($id); // IDを元にレビューを取得
+
+        if (!$record) {
+            abort(404, 'レビューが見つかりません。'); // レコードが見つからない場合は404エラー
+        }
+
+        return view('review.edit', ['record' => $record]);
     }
 
     //レビュー編集完了

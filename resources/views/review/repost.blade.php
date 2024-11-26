@@ -8,10 +8,10 @@
 </head>
 <body>
     <p>レビュー確認画面</p>
-    <form action="" method="">
+    <form action="{{route('update')}}" method="post">
         @csrf
         <h1>確認内容</h1>
-        書籍名{{}}
+        <p>書籍名{{}}</p>
         著書名{{}}
         レビュー内容{{}}
     </form>
