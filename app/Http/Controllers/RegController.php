@@ -20,6 +20,7 @@ class RegController extends Controller
             'publisher' => 'required|max:255',
             'price' => 'required|numeric|min:0',
         ]);
+
         return view('reg.check', ['data' => $validated]);
     }
 
