@@ -15,6 +15,7 @@ document.getElementById("btnCheck").addEventListener("click", async (e) => {
     const data = await res.json();
 
     // ISBN情報が見つかった場合
+
     if (data[0]) {
         const bookData = data[0].summary;
         document.querySelector('input[name="title"]').value =
@@ -26,4 +27,7 @@ document.getElementById("btnCheck").addEventListener("click", async (e) => {
     } else {
         alert("ISBN情報が見つかりませんでした。");
     }
+
 });
+
+
