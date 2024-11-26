@@ -10,8 +10,7 @@
      <style> body { width:600px; margin: 0 auto; }</style>
 </head>
 <body>
-    <h1>ISBNを入力してください</h1>
-    <!-- <a href="/">トップページに戻る</a> -->
+    <h1>ISBNを入力してください</h1><a href="/">トップページに戻る</a>
         <form action="/check" method="post">
             @csrf
             <div class="bm-3">
