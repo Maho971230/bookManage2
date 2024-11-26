@@ -13,9 +13,19 @@ class BookController extends Controller
     {
         $id = $req->id;
         $book = Book::find($id);
-        $reviews = Review::where('book_id',$id)->get();
+        $reviews = Review::where('book_id', $id)->get();
         $relation = Book::all();
 
-        return view('book', ['book' => $book, 'reviews' => $reviews, 'relation' => $relation]);
+        //bookの平均評価とレビュー数を取得する
+        $averageRating = $book->average_rating;
+        $reviewCount = $book->review_count;
+
+        return view('book', [
+            'book' => $book,
+            'reviews' => $reviews,
+            'relation' => $relation,
+            'averageRating' => $averageRating,
+            'reviewCount' => $reviewCount
+        ]);
     }
 }
