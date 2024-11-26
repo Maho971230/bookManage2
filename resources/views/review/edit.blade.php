@@ -11,22 +11,22 @@
 </head>
 
 <body>
-<form action="/repost" method="post"> <!-- 修正先のルートに対応 -->
-    @csrf
-    @if(isset($record))
-    <input type="hidden" name="id" value="{{ $record->id }}">
-    <br>
-    <p>書籍名:{{ $review->book->title }}</p>
-    <br>
-    レビュー内容<textarea name="content">{{ $record->content }}</textarea>
-    <br>
-    評価<input type="text" name="rating" value="{{ $record->rating }}">
-    <br>
-    <input type="submit" value="修正" class="btn btn-primary">
-    @else
-    <p>レビュー情報が見つかりません。</p>
-    @endif
-			</form>
+    <form action="/repost" method="post"> <!-- 修正先のルートに対応 -->
+        @csrf
+        @if(isset($record))
+        <input type="hidden" name="id" value="{{ $record->id }}">
+        <br>
+        <p>書籍名:{{ $review->book->title }}</p>
+        <br>
+        レビュー内容<textarea name="content">{{ $record->content }}</textarea>
+        <br>
+        評価<input type="text" name="rating" value="{{ $record->rating }}">
+        <br>
+        <input type="submit" value="修正" class="btn btn-primary">
+        @else
+        <p>レビュー情報が見つかりません。</p>
+        @endif
+    </form>
     <a href="{{route('top')}}" class="btn btn-secondary">戻る</a>
 </body>
 
