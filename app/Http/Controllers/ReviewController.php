@@ -13,8 +13,8 @@ class ReviewController extends Controller
     public function reviewCreate(Request $req)
     {
         $id = $req->book_id;
-        $reviews = Review::where('book_id',$id)->with('book')->get();
-        return view('review.reviewCreate' , ['reviews' => $reviews]);
+        $reviews = Review::where('book_id', $id)->with('book')->get();
+        return view('review.reviewCreate', ['reviews' => $reviews]);
     }
 
     //新規登録確認画面
@@ -38,14 +38,14 @@ class ReviewController extends Controller
         return view('review', $data);
     }
 
-    //レビュー編集画面
-    public function edit()
-    {
-        return view('review.edit');
-    }
+    // //レビュー編集画面
+    // public function edit()
+    // {
+    //     return view('review.edit');
+    // }
 
     //レビュー編集処理
-    public function repost(Request $req)
+    public function edit(Request $req)
     {
         //修正対象データのid値を取得
         $id = $req->id;
@@ -53,7 +53,7 @@ class ReviewController extends Controller
             //指定したid値に該当するレコードを連想配列に保存
             'record' => Review::find($id)
         ];
-        return view('review.repost', $data);
+        return view('review.edit', $data);
     }
 
     //レビュー編集完了
