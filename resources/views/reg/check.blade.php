@@ -14,14 +14,18 @@
 
     <form action="/store" method="post">
         @csrf
-        <input type="hidden" name="isbn" value="{{ $record->isbn }}">
-        <input type="hidden" name="title" value="{{ $record->title }}">
-        <input type="hidden" name="writer" value="{{ $writer }}">
-        <input type="hidden" name="publisher" value="{{ $publisher }}">
-        <input type="hidden" name="price" value="{{ $price }}">
-        <div class="buttons">
-            <button type="submit" class="btn btn-primary">登録</button>
-            <a href="/create" class="btn btn-secondary">前のページに戻る</a>
-        </div>
-    </form>
+        <input type="hidden" name="id" value={{$data->id}}><br>
+        <table class="table">
+            <tr><th>ISBN</th><th>書籍名</th><th>著者名</th><th>出版社名</th><th>価格</th></tr>    
+            <tr>
+                <th>{{$data->isbn}}</th>
+                <th>{{$data->title}}</th>
+                <th>{{$data->author}}</th>
+                <th>{{$data->publisher}}</th>
+                <th>{{$data->price}}</th>
+            </tr>  
+        </table>
+        <input type="submit" value="登録">
+        <a href="/create">前のページに戻る</a>
+     </form>
 </body>
