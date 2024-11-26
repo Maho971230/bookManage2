@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Controllers\
+use App\Http\Controllers\RegContrtoller;
 
 Route::get('/', function () {
     return view('top');
 });
 
-Route::get('/'),
+// Route::post('/',[]
+Route::get('/create',[RegController::class,'create']);
