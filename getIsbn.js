@@ -26,3 +26,4 @@ document.getElementById("btnCheck").addEventListener("click", async (e) => {
     } else {
         alert("ISBN情報が見つかりませんでした。");
     }
+});
