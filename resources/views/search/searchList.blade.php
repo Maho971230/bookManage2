@@ -18,33 +18,33 @@
     <a href="/">Topページに戻る</a>
     <h1>検索結果</h1>
     @if($results->isEmpty())
-    <p>該当する書籍はありません。</p>
+        <p>該当する書籍はありません。</p>
     @else
-    <form action="/book" method="post">
-    @csrf
-    <table class="table">
-        <thead>
-            {{-- 目次 --}}
-            <tr>
-                <th scope="col">番号</th>
-                <th scope="col">書籍名</th>
-                <th scope="col">著書名</th>
-                <th scope="col">詳細</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($results as $result)
-            {{-- 中身 --}}
-            <tr>
-                <th scope="row">1</th>
-                <td>{{$result->title}}</td>
-                <td>{{$result -> writer}}</td>
-                <td><input type="submit" value="詳細"></td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    </form>
+
+            @csrf
+            <table class="table">
+                <thead>
+                    {{-- 目次 --}}
+                    <tr>
+                        <th scope="col">番号</th>
+                        <th scope="col">書籍名</th>
+                        <th scope="col">著書名</th>
+                        <th scope="col">詳細</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($results as $book)
+                        {{-- 中身 --}}
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>{{$book->title}}</td>
+                            <td>{{$book->writer}}</td>
+                            <td><a href="{{route('book',$book->id)}}" class="btn btn-primary">詳細</a></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
     @endif
 </body>
 </html>
