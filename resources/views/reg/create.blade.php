@@ -12,48 +12,63 @@
 <body>
     <h1>書籍登録</h1><a href="/">トップページに戻る</a>
     <p>ISBNを入力してください</p>
-        <form action="/check" method="post">
+        <form id="isbn">
             @csrf
             <div class="bm-3">
                 <label for="isbn" class="form-label" >ISBN</label>
                 <input type="text" name="isbn" id="isbn" class="form-control" required>
 
             </div>
-            <input type="submit" value="検索" class="btn btn-primary">
+            <button type="button" id="btnCheck" class="btn btn-primary">検索</button>
         </form>
         <script>
+    document.getElementById("btnCheck").addEventListener("click", async (e) => {
+        // ISBNを取得（入力フィールドから）
+        const isbn = document.getElementById("isbn").value;
 
-            document.getElementById("btnCheck").addEventListener("click", async (e) => {
-    // ISBNを取得（入力フィールドから）
-    const isbn = document.getElementById("isbn").value;
+        // ISBNが空でないか確認
+        if (!isbn) {
+            alert("ISBNを入力してください。");
+            return;
+        }
 
-    // ISBNが空でないか確認
-    if (!isbn) {
-        alert("ISBNを入力してください。");
-        return;
-    }
+        const url = `https://api.openbd.jp/v1/get?isbn=${isbn}`;
 
-    const url = `https://api.openbd.jp/v1/get?isbn=${isbn}`;
+        // APIリクエストを送信
+        const res = await fetch(url);
+        const data = await res.json();
 
-    // APIリクエストを送信
-    const res = await fetch(url);
-    const data = await res.json();
+        //ISBN情報が見つからなかった場合
+        if (!data[0]) {
+            alert("ISBNが見つかりませんでした");
+            return;
+        }
 
-    // ISBN情報が見つかった場合
-
-    if (data[0]) {
+        // ISBN情報が見つかった場合
         const bookData = data[0].summary;
-        document.querySelector('input[name="title"]').value =
-            bookData.title || ""; // 書籍名
-        document.querySelector('input[name="writer"]').value =
-            bookData.writer || ""; // 著者名
-        document.querySelector('input[name="publisher"]').value =
-            bookData.publisher || ""; // 出版社名
-    } else {
-        alert("ISBN情報が見つかりませんでした。");
-    }
-});
-
-        </script>
+        const checkUrl = '/check';
+        const response = await fetch(checkUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}', // LaravelのCSRFトークン
+            },
+            body: JSON.stringify({
+                isbn,
+                title: bookData.title || "",
+                writer: bookData.writer || "",
+                publisher: bookData.publisher || "",
+            }),
+        });
+        const result = await response.json();
+        if (response.ok) {
+            alert("データ送信に成功しました！");
+            // 必要に応じてリダイレクト
+            window.location.href = "/next-page"; // 適切なリダイレクト先
+        } else {
+            alert("データ送信に失敗しました: " + result.message);
+        }
+    });
+</script>
 </body>
 </html>
