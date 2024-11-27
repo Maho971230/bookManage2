@@ -13,7 +13,7 @@ class SearchController extends Controller
     }
 
     //作者のあいまい検索の画面
-    public function searchWritter()
+    public function searchWriter()
     {
         return view('search.searchWriter');
     }
