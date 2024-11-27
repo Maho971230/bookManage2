@@ -28,5 +28,8 @@ class ReviewController extends Controller
     }
 
     //レビュー編集確認画面
-    public function repost
+    public function repost(Request $req)
+    {
+        $id=$req->id;
+    }
 }
