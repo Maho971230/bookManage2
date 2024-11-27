@@ -25,13 +25,16 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($results as $result)
             {{-- 中身 --}}
             <tr>
                 <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
+                    <td><a href="/book">{{$result->title}}</a></td>
+                    <td>{{$result -> writer}}</td>
             </tr>
+            @endforeach
         </tbody>
+
     </table>
 </body>
 </html>
