@@ -19,9 +19,9 @@ Route::post('login', [LoginController::class, 'loginCheck'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 
-Route::get('/create', [RegController::class, 'create']);
-Route::post('/check', [RegController::class, 'create']);
-Route::post('/store', [RegController::class, 'store']);
+Route::get('/create', [RegController::class, 'create'])->name('create');
+Route::post('/check', [RegController::class, 'create'])->name('check');
+Route::post('/store', [RegController::class, 'store'])->name('store');
 
 //一覧を表示
 Route::get('/list', [RegController::class, 'list']);
