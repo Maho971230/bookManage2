@@ -20,6 +20,8 @@
     @if($results->isEmpty())
     <p>該当する書籍はありません。</p>
     @else
+    <form action="/book" method="post">
+    @csrf
     <table class="table">
         <thead>
             {{-- 目次 --}}
@@ -27,6 +29,7 @@
                 <th scope="col">番号</th>
                 <th scope="col">書籍名</th>
                 <th scope="col">著書名</th>
+                <th scope="col">詳細</th>
             </tr>
         </thead>
         <tbody>
@@ -34,13 +37,14 @@
             {{-- 中身 --}}
             <tr>
                 <th scope="row">1</th>
-                <td><a href="/book">{{$result->title}}</a></td>
+                <td>{{$result->title}}</td>
                 <td>{{$result -> writer}}</td>
+                <td><input type="submit" value="詳細"></td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    </form>
     @endif
 </body>
-
 </html>
