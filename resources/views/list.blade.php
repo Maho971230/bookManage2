@@ -11,8 +11,9 @@
 
 <body>
     <h1>全件表示</h1>
-    <a href="/top">Topページに戻る</a>
+    <a href="/">Topページに戻る</a>
     <table class="table">
+        @csrf
         <tr>
             <th>書籍名</th>
             <th>著者名</th>
@@ -22,13 +23,13 @@
             <th>レビュー件数</th>
             <th>平均得点</th>
         </tr>
-        @foreach
+        @foreach($records as $record)
         <tr>
-            <td>{{$record->title}}</td>
+            <td><a href="/book">{{$record->title}}</a></td>
             <td>{{$record->writer}}</td>
             <td>{{$record->publisher}}</td>
             <td>{{$record->price}}</td>
-            <td>{{$record-isbn>}}</td>
+            <td>{{$record->isbn}}</td>
             <td>{{$record->countReview}}</td>
             <td>{{$record->avgPoint}}</td>
         </tr>
