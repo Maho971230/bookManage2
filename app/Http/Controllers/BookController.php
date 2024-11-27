@@ -12,9 +12,10 @@ class BookController extends Controller
     public function book(Request $req)
     {
         $id = $req->id;
-        $book = [
-            'record' => Book::find($id)
-        ];
-        return view('book', ['book' => $book]);
+        $book = Book::find($id);
+        $reviews = Review::where('book_id',$id)->get();
+        $relation = Book::all();
+
+        return view('book', ['book' => $book, 'reviews' => $reviews, 'relation' => $relation]);
     }
 }
