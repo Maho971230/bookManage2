@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <a href="">Topページに戻る</a>
+    <a href="/">Topページに戻る</a>
     <h1>検索結果</h1>
     <table class="table">
         <thead>
