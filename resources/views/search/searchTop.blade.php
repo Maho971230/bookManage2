@@ -7,8 +7,7 @@
 </head>
 <body>
     <h1>書籍検索</h1><a href="/">トップページに戻る</a>
-    <form action="/search/list" method="post">
-        書籍名  <input type="text" id="title">
-    </form>
+    <a href="/searchTitle">書籍名で検索</a>
+    <a href="/searchWriter">著者名で検索</a>
 </body>
 </html>
