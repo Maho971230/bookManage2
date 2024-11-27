@@ -6,9 +6,12 @@
     <title>書籍検索</title>
 </head>
 <body>
-    <h1>著作名(キーワード)を入力してください</h1>
-    <form action="/search/searchWriter" method="post"><a href="/">トップページに戻る</a>
-        <input type="text" name="writer" required><input type="submit" value="検索">
+    <h1>書籍名検索</h1>
+    <h2>書籍名(キーワード)を入力してください</h2><a href="/">トップページに戻る</a><br>
+    <form action="/searchList" method="post">
+        @csrf
+        <input type="hidden" name="type" value="title">
+        <input type="text" name="word" required><input type="submit" value="検索">
     </form>
 </body>
 </html>
