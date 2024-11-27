@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>書籍詳細情報</h1>
-    
+    <a href="/">トップページに戻る</a><br>
     <div class="container">
         <p>{{$book->title}}</p>
         <p>{{$book->writer}}</p>
