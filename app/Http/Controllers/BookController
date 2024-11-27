@@ -9,9 +9,12 @@ use App\Models\Review;
 
 class BookController extends Controller
 {
-    public function book($id)
+    public function book(Request $req)
     {
-        $book = Book::find($id);
+        $id = $req->id;
+        $book = [
+            'record' => Book::find($id)
+        ];
         return view('book', ['book' => $book]);
     }
 }
