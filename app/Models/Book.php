@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    protected $fillable = [
+        'isbn', 'title', 'writer', 'publisher', 'price'
+    ];
+    
     public function reviews()
     {
         return $this->hasMany(Review::class);
