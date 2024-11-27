@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\BookController;
+
 
 Route::get('/', function () {
     return view('top');
