@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン画面</title>
         <!-- 外部CSSを読み込む -->
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="/assets/css/login.css">
 </head>
 <body>
+    <div>
     <h1>社員名とパスワードを入力してください</h1>
     <form action="/top" method="post">
         @csrf
@@ -15,5 +16,6 @@
         パスワード <input type="password" name="password" required>
         <input type="submit" value="ログイン">
     </form>
+    </div>
 </body>
 </html>
