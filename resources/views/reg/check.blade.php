@@ -11,19 +11,19 @@
     <h1>この内容で登録してもよろしいですか？</h1>
     <form action="/store" method="post">
         @csrf
-        <input type="hidden" name="id" value={{$data->id}}><br>
+        <input type="hidden" name="id" value="{{$data->id}}"><br>
         <table class="table">
             <tr><th>ISBN</th><th>書籍名</th><th>著者名</th><th>出版社名</th><th>価格</th></tr>    
             <tr>
-                <th>{{$data->isbn}}</th>
-                <th>{{$data->title}}</th>
-                <th>{{$data->writer}}</th>
-                <th>{{$data->publisher}}</th>
-                <th>{{$data->price}}</th>
+                <td>{{$data->isbn}}</td>
+                <td>{{$data->title}}</td>
+                <td>{{$data->writer}}</td>
+                <td>{{$data->publisher}}</td>
+                <td>{{$data->price}}</td>
             </tr>  
         </table>
-        <input type="submit" value="登録">
-        <a href="/create">前のページに戻る</a>
+        <input type="submit" value="登録" calss="btn btn-primary">
+        <a href="/create" class="btn btn-secondary">前のページに戻る</a>
      </form>
 </body>
 </html>
