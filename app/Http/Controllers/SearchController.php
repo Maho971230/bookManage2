@@ -19,7 +19,7 @@ class SearchController extends Controller
     }
 
     //書籍名のあいまい検索の画面
-    public function seartchTitle()
+    public function searchTitle()
     {
         return view('search.searchTitle');
     }
