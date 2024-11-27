@@ -9,7 +9,13 @@
 <body>
     <h1>書籍詳細情報</h1>
     
-    <form action="/" method="post">
+    <div class="container">
+        <p>{{$book->title}}</p>
+        <p>{{$book->writer}}</p>
+        <p>価格: ¥{{ $book->price }}</p>
+        <p>ISBN: {{ $book->isbn }}</p>
+    </div>
+    <!-- <form action="/" method="post">
         @csrf
         書籍名{{}}
         <img src="/" alt="書籍の画像" width="" height="">
@@ -23,6 +29,6 @@
     
         <input type="submit" value="編集" name="update_review">
         <input type="submit" value="削除" name="delete_review">
-    </form>
+    </form> -->
 </body>
 </html>
