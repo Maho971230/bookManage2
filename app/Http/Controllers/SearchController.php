@@ -33,7 +33,7 @@ class SearchController extends Controller
         if ($type === 'writer') {
             $results = Book::where('writer', 'LIKE', '%'.$word.'%')->get();
         } elseif ($type === 'title') {
-            $results = Book::where('title', 'LIKE', '%'.$word'%')->get();
+            $results = Book::where('title', 'LIKE', '%'.$word.'%')->get();
         }
 
         //ビュー(searchList)に結果の連想配列を送る
