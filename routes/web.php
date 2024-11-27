@@ -37,3 +37,9 @@ Route::post('/searchList', [SearchController::class, 'searchList'])->name('searc
 
 // 書籍詳細ページを表示
 Route::post('book/{id}', [BookController::class, 'book'])->name('book');
+
+//レビュー編集画面
+
+//レビュー編集確認
+
+//レビュー編集完了
