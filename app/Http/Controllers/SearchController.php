@@ -37,7 +37,7 @@ class SearchController extends Controller
         }
 
         //ビュー(searchList)に結果の連想配列を送る
-        return view('search.searchList', ['reuslts' => $results, 'word' => $word, 'type' => $type]);
+        return view('search.searchList', ['results' => $results, 'word' => $word, 'type' => $type]);
     }
 
 
