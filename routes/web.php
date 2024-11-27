@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\BookController;
@@ -9,6 +10,13 @@ use App\Http\Controllers\BookController;
 Route::get('/', function () {
     return view('top');
 });
+
+//ログイン画面の表示
+Route::get('login', [LoginController::class, 'login'])->name('login');
+//ログイン処理
+Route::post('login', [LoginController::class, 'loginCheck'])->name('login');
+//ログアウト
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 
 Route::get('/create', [RegController::class, 'create']);
