@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     // ログイン画面の表示
-    // public function login()
-    // {
-    //     return view('login');
-    // }
+    public function login()
+    {
+        return view('login');
+    }
 
     // ログイン処理
     public function loginCheck(Request $req)
@@ -45,8 +45,9 @@ class LoginController extends Controller
     // ログアウト
     public function logout()
     {
-        Auth::logout();//ログイン情報の破棄(ファサード)
-        return redirect()->route('login');
+        // Auth::logout();//ログイン情報の破棄(ファサード)
+        return redirect()->route('/login');
+        return view('login');
     }
 
     // Top画面
