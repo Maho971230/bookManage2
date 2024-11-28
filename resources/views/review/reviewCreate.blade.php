@@ -27,11 +27,11 @@
         <div class="form-group">
             <label for="rating">評価（1～5）:</label>
             <div class="star-rating" id="star-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
             </div>
             <input type="hidden" name="rating" id="rating" value="0">
         </div>
