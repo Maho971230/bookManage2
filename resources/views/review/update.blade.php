@@ -7,7 +7,7 @@
     <title>編集完了画面</title>
 </head>
 <body>
-    <a href="">トップページに戻る</a>
+    <a href="/top">トップページに戻る</a>
     <h1>登録が完了しました</h1>
     <a href="">詳細情報に戻る</a>
 </body>
