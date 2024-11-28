@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>書籍名検索</h1>
-    <h2>書籍名(キーワード)を入力してください</h2><a href="/">トップページに戻る</a><br>
+    <h2>書籍名(キーワード)を入力してください</h2><a href="/top">トップページに戻る</a><br>
     <form action="/searchList" method="post">
         @csrf
         <input type="hidden" name="type" value="title">
