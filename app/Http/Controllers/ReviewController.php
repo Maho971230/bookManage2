@@ -67,31 +67,6 @@ class ReviewController extends Controller
         $newContent = $req->input('content');
         $newRating = $req->input('rating');
 
-        // 変更内容をビューに渡す
-        return view('review.repost', [
-            'review' => $review,
-            'newContent' => $newContent,
-            'newRating' => $newRating
-        ]);
-    }
-    
-    public function repost(Request $req)
-    {
-        // idをリクエストから取得
-        $id = $req->input('id');
-
-        // レビューをIDで検索
-        $review = Review::find($id);
-
-        if (!$review) {
-            // 見つからない場合は404エラーを返す
-            abort(404, 'レビューが見つかりません。');
-        }
-
-        // フォームから送られてきたデータを取得
-        $newContent = $req->input('content');
-        $newRating = $req->input('rating');
-
         // 変更された内容があれば、レビューオブジェクトに設定
         if ($newContent) {
             $review->content = $newContent;
