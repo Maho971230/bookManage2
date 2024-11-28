@@ -13,13 +13,13 @@
     <form action="{{route('update')}}" method="post">
         @csrf
         <h1>確認内容</h1>
-        <input type="hidden" name="id" value={{$record->id}}>
+        <input type="hidden" name="id" value={{$review->id}}>
         <br>
         <p>書籍名</p>
         <br>
-        レビュ－内容[{{$record->content}}]
+        レビュ－内容[{{$review->content}}]
         <br>
-        評価[{{$record->rating}}]
+        評価[{{$review->rating}}]
         <br>
         <input type="submit" value="登録" class="btn btn-primary">
     </form>
