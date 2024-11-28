@@ -15,51 +15,37 @@
     <a href="/top">トップページに戻る</a>
     <p>ISBNを入力してください</p>
     
-    <!-- ISBN検索フォーム -->
-    <form action="{{ route('check') }}" method="post">
-        @csrf
-        <div class="bm-3">
-            <label for="isbn" class="form-label">ISBN</label>
-            <input type="text" name="isbn" id="isbn" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">検索</button>
-    </form>
+    <div>
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" id="isbn" class="form-control" required>
+        <button id="searchBtn" class="btn btn-primary mt-3">検索</button>
+    </div>
 
     <script>
-    document.getElementById("btnCheck").addEventListener("click", async (e) => {
-        // ISBNを取得（入力フィールドから）
-        const isbn = document.getElementById("isbn").value;
+        document.getElementById('searchBtn').addEventListener('click', async () => {
+            const isbn = document.getElementById('isbn').value;
 
-        // ISBNが空でないか確認
-        if (!isbn) {
-            alert("ISBNを入力してください。");
-            return;
-        }
+            if (!isbn) {
+                alert("ISBNを入力してください。");
+                return;
+            }
 
-        //openbdのurl
-        const url = `https://api.openbd.jp/v1/get?isbn=${isbn}`;
+            try {
+                const response = await axios.post('/check', { isbn });
+                const data = response.data;
 
-        // APIリクエストを送信
-        //fetch()を利用したURLに接続し、データをダウンロード
-        const res = await fetch(url);
-        //データの受信が完了したら、JSONデータに変換
-        const data = await res.json();
+                // 結果を表示
+                document.getElementById('result-isbn').textContent = data.isbn;
+                document.getElementById('result-title').textContent = data.title;
+                document.getElementById('result-writer').textContent = data.writer;
+                document.getElementById('result-publisher').textContent = data.publisher;
+                document.getElementById('result-price').textContent = data.price;
+                document.getElementById('result').style.display = 'block';
 
-        // ISBN情報が見つからなかった場合
-        if (!data[0]) {
-            alert("ISBNが見つかりませんでした");
-            return;
-        }
-
-        // ISBN情報が見つかった場合
-        const bookData = data[0].summary;
-
-        // フォームに取得したデータを入力
-        document.getElementById('title').value = bookData.title || "";
-        document.getElementById('writer').value = bookData.writer || "";
-        document.getElementById('publisher').value = bookData.publisher || "";
-        document.getElementById('price').value = bookData.price || "";
-    });
-</script>
+            } catch (error) {
+                alert(error.response.data.error || 'エラーが発生しました');
+            }
+        });
+    </script>
 </body>
 </html>
