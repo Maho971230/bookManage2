@@ -13,7 +13,7 @@
     <form action="{{route('update')}}" method="post">
         @csrf
         <h1>確認内容</h1>
-        <input type="hidden" name="id" value={{$record->}}>
+        <input type="hidden" name="id" value={{$record->id}}>
         <br>
         <p>書籍名</p>
         <br>
