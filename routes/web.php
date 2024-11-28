@@ -8,17 +8,19 @@ use App\Http\Controllers\BookController;
 
 
 Route::get('/', function () {
-    return view('top');
+    return view('login');
 });
 
 //ログイン画面の表示
-Route::get('login', [LoginController::class, 'login'])->name('login');
+// Route::get('/login', [LoginController::class, 'login'])->name('login');
 //ログイン処理
-Route::post('login', [LoginController::class, 'loginCheck'])->name('login');
+Route::match(['get', 'post'], '/top', [LoginController::class, 'loginCheck'])->name('login');
 //ログアウト
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// 
+//Top画面を表示
+Route::match(['get', 'post'], '/top', [LoginController::class, 'top'])->name('top');
+
 Route::get('/create', [RegController::class, 'create'])->name('create');
 Route::post('/check', [RegController::class, 'create'])->name('check');
 Route::post('/store', [RegController::class, 'store'])->name('store');
