@@ -1,136 +1,34 @@
-<?php
+<!DOCTYPE html>
+<html lang="ja">
 
-namespace App\Http\Controllers;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>レビュー確認</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
 
-use Illuminate\Http\Request;
-use App\Models\Book;
-use App\Models\Employee;
-use App\Models\Review;
+<body>
+    <p>レビュー確認画面</p>
+    <form action="{{route('update')}}" method="post">
+        @csrf
+        <h1>確認内容</h1>
+        <input type="hidden" name="id" value={{$review->id}}>
+        <br>
+        <p>書籍名:{{ $review->book->title }}</p>
+        <br>
+        レビュー内容:
+        <p>{{ old('content', $review->content) }}</p>
+        <br>
+        評価:
+        <p>{{ old('rating', $review->rating) }}</p>
 
-class ReviewController extends Controller
-{
-    //新規レビュー登録画面
-    public function reviewCreate(Request $req)
-    {
-        $id = $req->book_id;
-        $reviews = Review::where('book_id', $id)->with('book')->get();
-        return view('review.reviewCreate', ['reviews' => $reviews]);
-    }
+        <br>
+        <input type="submit" value="登録" class="btn btn-primary">
+    </form>
+    <a href="{{route('top')}}" class="btn btn-secondary">戻る</a>
+</body>
 
-    //新規登録確認画面
-    public function postconf(Request $req)
-    {
-        return view('review.postconf');
-    }
-
-    //新規登録完了画面
-    public function reviewStore(Request $req)
-    {
-        $review = new Review();
-        $review->content = $req->content;
-        $review->rating = $req->rating;
-
-        $review->save();
-        $data = [
-            'content' => $req->content,
-            'rating' => $req->rating
-        ];
-        return view('review', $data);
-    }
-
-    //レビュー編集処理
-    public function edit(Request $req)
-    {
-        $id=$req->input('id');
-        $record = Review::find($id);
-       if (!$record) {
-        abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
-       }
-
-        return view('review.edit', ['record' => $record]);
-        }
-    
-    public function repost(Request $req)
-    {
-        // idをリクエストから取得
-        $id = $req->input('id');
-
-        // レビューをIDで検索
-        $review = Review::find($id);
-
-        if (!$review) {
-            // 見つからない場合は404エラーを返す
-            abort(404, 'レビューが見つかりません。');
-        }
-
-        // フォームから送られてきたデータを取得
-        $newContent = $req->input('content');
-        $newRating = $req->input('rating');
-
-        // 変更された内容があれば、レビューオブジェクトに設定
-        if ($newContent) {
-            $review->content = $newContent;
-        }
-
-        if ($newRating) {
-            $review->rating = $newRating;
-        }
-
-        // 変更内容をビューに渡す
-        return view('review.repost', [
-            'review' => $review
-        ]);
-        // return view('review.repost', [
-        //     'review' => $review,
-        //     'newContent' => $newContent,
-        //     'newRating' => $newRating
-        // ]);
-    }
-    
-
-    //レビュー編集完了
-    public function update(Request $req)
-    {
-        //修正対象のid値に該当するレコードを取得
-        $review = Review::find($req->id);
-        //フォームに入力されているデータをモデルに上書き
-        $review->content = $req->content;
-        $review->rating = $req->rating;
-        //モデルのデータをレーブルに保存
-        $review->save();
-        $data = [
-            'id' => $req->id,
-            'content' => $req->content,
-            'rating' => $req->rating
-        ];
-        return view('review.update,$data');
-    }
-
-    //レビュー削除処理
-    public function erase(Request $req)
-    {
-        //削除対象のid値を取得
-        $id = $req->id;
-        //指定したid値に該当するレコードを連想配列に保存
-        $data = [
-            'record' => Review::find($id)
-        ];
-        return view('review.erase', $data);
-    }
-
-    //レビュー削除完了
-    public function delete(Request $req)
-    {
-        //削除対象のdi値に該当するレコードを取得
-        $review = Review::find($req->id);
-        //該当するレコードの情報を連想配列に保存
-        $data = [
-            'id' => $req->id,
-            'content' => $review->content,
-            'rating' => $review->rating
-        ];
-        //データを削除するメソッドを実行
-        $review->delete();
-        return view('review.delete', $data);
-    }
-}
+</html>
