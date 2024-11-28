@@ -7,10 +7,13 @@
     <title>レビュー編集画面</title>
 </head>
 <body>
-    <form action="">
+    <form action="/repost" method="post">
         @csrf
-        書籍名{{}}
-        評価{{}}
+        <input type="hidden" name="id" value={{$record->id}}>
+        <br>
+        書籍名<textarea name="content">{{$record->content}}</textarea>
+        <br>
+        評価<input type="text">
         レビュー内容{{}}
     </form>
     <input type="submit" value="登録">
