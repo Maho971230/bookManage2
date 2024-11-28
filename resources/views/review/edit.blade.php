@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<form action="/repost" method="post"> <!-- 修正先のルートに対応 -->
+    @csrf
     @if(isset($record))
     <input type="hidden" name="id" value="{{ $record->id }}">
     <br>
@@ -22,7 +24,7 @@
     @else
     <p>レビュー情報が見つかりません。</p>
     @endif
-
+			</form>
     <a href="{{route('top')}}" class="btn btn-secondary">戻る</a>
 </body>
 
