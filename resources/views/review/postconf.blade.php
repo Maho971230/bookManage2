@@ -11,15 +11,15 @@
 </head>
 <body>
     <h1>以下の内容で登録してもよろしいですか</h1>
-    <form action="/store" method="post">
+    <form action="{{route('store')}}" method="post">
         @csrf
             <h1>確認内容</h1>
-            <input type="hidden" name="id" value="{{}}">
+            <input type="hidden" name="id" value="{{record->}}">
             <br>
             <p>書籍名</p> <br>
             <p>著書名</p> <br>
-            評価[{{}}] <br>
-            レビュー内容[{{}}]
+            評価[{{$record-rating}}] <br>
+            レビュー内容[{{$record->content}}]
             <br>
             <input type="submit" value="登録">
         </form>
