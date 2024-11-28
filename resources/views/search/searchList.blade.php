@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <a href="/">Topページに戻る</a>
+    <a href="/top">Topページに戻る</a>
     <h1>検索結果</h1>
     @if($results->isEmpty())
         <p>該当する書籍はありません。</p>
