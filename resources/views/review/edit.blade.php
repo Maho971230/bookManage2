@@ -16,6 +16,8 @@
     @if(isset($record))
     <input type="hidden" name="id" value="{{ $record->id }}">
     <br>
+    <p>書籍名:{{ $review->book->title }}</p>
+    <br>
     レビュー内容<textarea name="content">{{ $record->content }}</textarea>
     <br>
     評価<input type="text" name="rating" value="{{ $record->rating }}">
