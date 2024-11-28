@@ -8,6 +8,7 @@
 </head>
 <body>
     <form action="">
+        @csrf
         書籍名{{}}
         評価{{}}
         レビュー内容{{}}
