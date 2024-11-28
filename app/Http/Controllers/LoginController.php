@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Employee;
 use App\Models\Review;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //ログイン画面の表示
-    public function login()
-    {
-        return view('login');
-    }
+    // ログイン画面の表示
+    // public function login()
+    // {
+    //     return view('login');
+    // }
 
     // ログイン処理
     public function loginCheck(Request $req)
@@ -45,6 +47,12 @@ class LoginController extends Controller
     {
         Auth::logout();//ログイン情報の破棄(ファサード)
         return redirect()->route('login');
+    }
+
+    // Top画面
+    public function top()
+    {
+        return view('top');
     }
 
 }
