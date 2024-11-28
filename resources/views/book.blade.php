@@ -25,7 +25,11 @@
                     <input type="hidden" name="id" value="{{$review->id}}">
                     <input type="submit" value="更新">
                 </form>
-                <form action="/erase" method="post"><input type="submit" value="削除">@csrf</form>
+                <form action="/erase" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$review->id}}">
+                    <input type="submit" value="削除">
+                </form>
             @endforeach
         @else
             <p>レビューはまだありません。</p>
