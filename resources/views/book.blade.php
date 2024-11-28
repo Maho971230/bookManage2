@@ -20,7 +20,11 @@
             <p>レビュー</p><form action="/postconf" method="post"><input type="submit" value="新規投稿">@csrf</form>
             @foreach($reviews as $review)
                 <p>レビュー: {{ $review->content }}</p><p>点数: {{ $review->rating }}</p>
-                <form action="/repost" method="post"><input type="submit" value="更新">@csrf</form>
+                <form action="/edit" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{ $review->id }}"> <!-- レビューIDをhiddenフィールドで渡す -->
+                <input type="submit" value="更新">
+                </form>
                 <form action="/erase" method="post"><input type="submit" value="削除">@csrf</form>
             @endforeach
         @else
