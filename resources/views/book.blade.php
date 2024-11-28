@@ -11,10 +11,10 @@
     <a href="/top">トップページに戻る</a><br>
     <div class="container">
         @csrf
-        <p>{{$book->title}}</p>
-        <p>{{$book->writer}}</p>
-        <p>価格: ¥{{ $book->price }}</p>
-        <p>ISBN: {{ $book->isbn }}</p>
+        <p>書籍名:{{$book->title}}</p>
+        <p>著者名:{{$book->writer}}</p>
+        <p>価格:¥{{ $book->price }}</p>
+        <p>ISBN:{{ $book->isbn }}</p>
 
         @if($reviews->isNotEmpty())
             <p>レビュー</p><form action="/postconf" method="post"><input type="submit" value="新規投稿">@csrf</form>
