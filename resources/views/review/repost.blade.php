@@ -9,6 +9,7 @@
 <body>
     <p>レビュー確認画面</p>
     <form action="" method="">
+        @csrf
         <h1>確認内容</h1>
         書籍名{{}}
         著書名{{}}
