@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>書籍詳細情報</h1>
-    <a href="/">トップページに戻る</a><br>
+    <a href="/top">トップページに戻る</a><br>
     <div class="container">
         @csrf
         <p>{{$book->title}}</p>
