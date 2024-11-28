@@ -12,15 +12,15 @@
 
 <body>
     @if(isset($record))
-    <input type="hidden" name="id" value="{{ $record->id }}">
-    <br>
-    レビュー内容<textarea name="content">{{ $record->content }}</textarea>
-    <br>
-    評価<input type="text" name="rating" value="{{ $record->rating }}">
-    <br>
-    <input type="submit" value="修正" class="btn btn-primary">
+        <input type="hidden" name="id" value="{{ $record->id }}">
+        <br>
+        レビュー内容<textarea name="content">{{ $record->content }}</textarea>
+        <br>
+        評価<input type="text" name="rating" value="{{ $record->rating }}">
+        <br>
+        <input type="submit" value="修正" class="btn btn-primary">
     @else
-    <p>レビュー情報が見つかりません。</p>
+        <p>レビュー情報が見つかりません。</p>
     @endif
 
     <a href="{{route('top')}}">戻る</a>
