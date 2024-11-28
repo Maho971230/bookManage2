@@ -42,14 +42,14 @@ Route::post('/searchList', [SearchController::class, 'searchList'])->name('searc
 Route::get('book/{id}', [BookController::class, 'book'])->name('book');
 
 //レビュー登録画面
-Route::get('/reviewCreate', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
+Route::post('/reviewCreate/{book_id}', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
 //レビュー登録確認
 Route::post('/postconf', [ReviewController::class, 'postconf'])->name('postconf');
 //レビュー登録完了
 Route::post('/reviewStore', [ReviewController::class, 'reviewStore'])->name('reviewStore');
 
 //レビュー編集画面
-Route::get('/edit', [ReviewController::class, 'edit'])->name('edit');
+Route::post('/edit', [ReviewController::class, 'edit'])->name('edit');
 //レビュー編集確認
 Route::post('/repost', [ReviewController::class, 'repost'])->name('repost');
 //レビュー編集完了
