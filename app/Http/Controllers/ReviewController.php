@@ -110,27 +110,27 @@ class ReviewController extends Controller
     public function erase(Request $req)
     {
         //削除対象のid値を取得
-        $id = $req->id;
-        //指定したid値に該当するレコードを連想配列に保存
-        $data = [
-            'record' => Review::find($id)
-        ];
-        return view('review.erase', $data);
+        $id = $req->input('id');
+        $review=Review::find($id);
+        if (!$review) {
+            // 見つからない場合は404エラーを返す
+            abort(404, 'レビューが見つかりません。');
+        }
+        return view('review.erase', ['review'=>$review]);
     }
 
     //レビュー削除完了
     public function delete(Request $req)
     {
+        $id=$req->input('id');
         //削除対象のdi値に該当するレコードを取得
-        $review = Review::find($req->id);
-        //該当するレコードの情報を連想配列に保存
-        $data = [
-            'id' => $req->id,
-            'content' => $review->content,
-            'rating' => $review->rating
-        ];
+        $review = Review::find($id);
+        if (!$review) {
+            // 見つからない場合は404エラーを返す
+            abort(404, 'レビューが見つかりません。');
+        }
         //データを削除するメソッドを実行
         $review->delete();
-        return view('review.delete', $data);
+        return view('review.delete', ['review'=>$review]);
     }
 }
