@@ -14,26 +14,24 @@
     <a href="/top">Topページに戻る</a>
     <table class="table">
         @csrf
-        <tr>
-            <th>書籍名</th>
-            <th>著者名</th>
-            <th>出版社名</th>
-            <th>価格</th>
-            <th>ISBN</th>
-            <th>レビュー件数</th>
-            <th>平均得点</th>
-        </tr>
-        @foreach($records as $record)
-        <tr>
-            <td><a href="/book">{{$record->title}}</a></td>
-            <td>{{$record->writer}}</td>
-            <td>{{$record->publisher}}</td>
-            <td>{{$record->price}}</td>
-            <td>{{$record->isbn}}</td>
-            <td>{{$record->countReview}}</td>
-            <td>{{$record->avgPoint}}</td>
-        </tr>
-        @endforeach
+        <thead>
+            <tr>
+                <th scope="col">番号</th>
+                <th scope="col">書籍名</th>
+                <th scope="col">著書名</th>
+                <th scope="col">詳細</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($records as $record)
+                <tr>
+                    <td>{{$record->title}}</td>
+                    <td>{{$record->writer}}</td>
+                    <td>{{$record->publisher}}</td>
+                    <td><a href="{{route('book',$record->id)}}" class="btn btn-primary">詳細</a></td>
+                </tr>
+            @endforeach
+        <tbody>
     </table>
 </body>
 
