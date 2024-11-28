@@ -7,7 +7,7 @@
     <title>削除完了画面</title>
 </head>
 <body>
-    <a href="">トップページに戻る</a>
+    <a href="/top">トップページに戻る</a>
     <h1>削除しました</h1>
     <a href="">詳細情報に戻る</a>
 </body>
