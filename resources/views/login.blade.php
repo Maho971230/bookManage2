@@ -10,9 +10,9 @@
 <body>
     <div>
     <h1>社員名とパスワードを入力してください</h1>
-    <form action="/top" method="post">
+    <form action="{{route('login')}}" method="post">
         @csrf
-        社員名　　 <input type="text" name="name" required><br>
+        社員名　　<input type="text" name="name" required><br>
         パスワード <input type="password" name="password" id="password" required>
         <input type="submit" value="ログイン">
         @error('name')
