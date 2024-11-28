@@ -11,7 +11,11 @@
     <h1>この内容で登録してもよろしいですか？</h1>
     <form action="/store" method="post">
         @csrf
-        <input type="hidden" name="id" value="{{$data->id}}"><br>
+        <input type="hidden" name="isbn" value="{{ $data['isbn'] }}">
+            <input type="hidden" name="title" value="{{ $data['title'] }}">
+            <input type="hidden" name="writer" value="{{ $data['writer'] }}">
+            <input type="hidden" name="publisher" value="{{ $data['publisher'] }}">
+            <input type="hidden" name="price" value="{{ $data['price'] }}">
         <table class="table">
             <tr><th>ISBN</th><th>書籍名</th><th>著者名</th><th>出版社名</th><th>価格</th></tr>    
             <tr>
@@ -22,8 +26,8 @@
                 <td>{{$data->price}}</td>
             </tr>  
         </table>
-        <input type="submit" value="登録" calss="btn btn-primary">
-        <a href="/create" class="btn btn-secondary">前のページに戻る</a>
+        <input type="submit" value="登録" class="btn btn-primary">
+        <a href="{{route('create')}}" class="btn btn-secondary">前のページに戻る</a>
      </form>
 </body>
 </html>
