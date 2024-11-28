@@ -10,9 +10,11 @@ use App\Models\Review;
 class ReviewController extends Controller
 {
     //新規レビュー登録画面
-    public function reviewCreate()
+    public function reviewCreate(Request $req)
     {
-        return view('review.reviewCreate');
+        $id = $req->id;
+        $reviews = Review::where('book_id',$id)->get();
+        return view('review.reviewCreate' , ['reviews' => $reviews]);
     }
 
     //新規登録確認画面
