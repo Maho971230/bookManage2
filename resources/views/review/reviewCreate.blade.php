@@ -27,11 +27,11 @@
         <div class="form-group">
             <label for="rating">評価（1～5）:</label>
             <div class="star-rating" id="star-rating">
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
             </div>
             <input type="hidden" name="rating" id="rating" value="0">
         </div>
@@ -57,32 +57,41 @@
 
     <!-- 星評価のJavaScript -->
     <script>
-        const stars = document.querySelectorAll("#star-rating i");
-        const ratingInput = document.getElementById("rating");
-        
-        let index =[1,2,3,4,5]; 
-        stars.forEach((star, index) => {
-            star.addEventListener("mouseover", () => {
-                for (let i = 0; i <= index; i++) {
-                    stars[i].classList.add("selected");
+    const stars = document.querySelectorAll(".star-rating i");
+    let selectedRating = -1; // 現在の選択状態を保存する変数
+
+    stars.forEach((star, index) => {
+        // マウスオーバーで星をハイライト
+        star.addEventListener("mouseover", () => {
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add("hover");
+            }
+            for (let i = index + 1; i < stars.length; i++) {
+                stars[i].classList.remove("hover");
+            }
+        });
+
+        // クリックで星の選択を確定
+        star.addEventListener("click", () => {
+            selectedRating = index; // 現在の選択を保存
+            stars.forEach(s => s.classList.remove("selected")); // 全てリセット
+            for (let i = 0; i <= selectedRating; i++) {
+                stars[i].classList.add("selected");
+            }
+        });
+
+        // マウスアウト時、現在の選択状態を維持
+        star.addEventListener("mouseout", () => {
+            stars.forEach((s, i) => {
+                s.classList.remove("hover");
+                if (i <= selectedRating) {
+                    s.classList.add("selected");
+                } else {
+                    s.classList.remove("selected");
                 }
-                for (let i = index + 1; i < stars.length; i++) {
-                    stars[i].classList.remove("selected");
-                }
-            });
-            
-            star.addEventListener("click", () => {
-                ratingInput.value = index + 1;
             });
         });
-        
-        stars.forEach((star) => {
-            star.addEventListener("mouseout", () => {
-                stars.forEach((star) => {
-                    star.classList.remove("selected");
-                });
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
