@@ -51,7 +51,7 @@ class ReviewController extends Controller
             //指定したid値に該当するレコードを連想配列に保存
             'record' => Review::find($id)
         ];
-        return view('view.repost', $data);
+        return view('review.repost', $data);
     }
 
     //レビュー編集完了
