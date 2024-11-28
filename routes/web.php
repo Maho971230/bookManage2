@@ -49,7 +49,7 @@ Route::post('/postconf', [ReviewController::class, 'postconf'])->name('postconf'
 Route::post('/reviewStore', [ReviewController::class, 'reviewStore'])->name('reviewStore');
 
 //レビュー編集画面
-Route::post('/edit/{id}', [ReviewController::class, 'edit'])->name('edit');
+Route::post('/edit', [ReviewController::class, 'edit'])->name('edit');
 //レビュー編集確認
 Route::post('/repost', [ReviewController::class, 'repost'])->name('repost');
 //レビュー編集完了
