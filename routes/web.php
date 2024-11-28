@@ -13,7 +13,7 @@ Route::get('/', function () {
 });
 
 //ログイン画面の表示
-// Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
 //ログイン処理
 Route::match(['get', 'post'], '/top', [LoginController::class, 'loginCheck'])->name('login');
 //ログアウト
