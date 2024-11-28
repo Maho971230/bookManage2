@@ -10,6 +10,7 @@
     <p>新規レビュー登録画面</p>
     <h1>書籍名</h1>
     <form action="" method="">
+        @csrf
         評価{{}}
         <input type="radio">結果
         <input type="texterea" name="" value="">レビュー
