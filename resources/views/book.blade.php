@@ -20,16 +20,19 @@
             @foreach($reviews as $review)
                 <p>レビュー</p><form action="{{route('reviewCreate',$review->book_id)}}" method="post"><input type="submit" value="新規投稿">@csrf</form>
                 <p>レビュー: {{ $review->content }}</p><p>点数: {{ $review->rating }}</p>
-                <form action="/edit" method="post">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$review->id}}">
-                    <input type="submit" value="更新">
-                </form>
-                <form action="/erase" method="post">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$review->id}}">
-                    <input type="submit" value="削除">
-                </form>
+                <!-- 投稿者のみ編集と削除を表示 -->
+                @if($review->employee_id === Auth::id())
+                    <form action="/edit" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$review->id}}">
+                        <input type="submit" value="更新">
+                    </form>
+                    <form action="/erase" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$review->id}}">
+                        <input type="submit" value="削除">
+                    </form>
+                @endif
             @endforeach
         @else
             <p>レビューはまだありません。</p>
