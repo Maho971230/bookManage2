@@ -5,7 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\BookController;
-
+use App\Http\Controllers\ReviewController;
+use App\Models\Review;
 
 Route::get('/', function () {
     return view('login');
@@ -40,8 +41,21 @@ Route::post('/searchList', [SearchController::class, 'searchList'])->name('searc
 // 書籍詳細ページを表示
 Route::post('book/{id}', [BookController::class, 'book'])->name('book');
 
+//レビュー登録画面
+Route::get('/reviewCreate', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
+//レビュー登録確認
+Route::post('/postconf', [ReviewController::class, 'postconf'])->name('postconf');
+//レビュー登録完了
+Route::post('/reviewStore', [ReviewController::class, 'reviewStore'])->name('reviewStore');
+
 //レビュー編集画面
-
+Route::get('/edit', [ReviewController::class, 'edit'])->name('edit');
 //レビュー編集確認
-
+Route::post('/repost', [ReviewController::class, 'repost'])->name('repost');
 //レビュー編集完了
+Route::post('/update', [ReviewController::class, 'update'])->name('update');
+
+//レビュー削除確認
+Route::post('/erase', [ReviewController::class, 'erase'])->name('erase');
+//レビュー削除完了
+Route::post('/delete', [ReviewController::class, 'delete'])->name('delete');
