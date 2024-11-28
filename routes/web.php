@@ -39,7 +39,7 @@ Route::get('/searchTitle', [SearchController::class, 'searchTitle'])->name('sear
 Route::post('/searchList', [SearchController::class, 'searchList'])->name('search.searchList');
 
 // 書籍詳細ページを表示
-Route::post('book/{id}', [BookController::class, 'book'])->name('book');
+Route::get('book/{id}', [BookController::class, 'book'])->name('book');
 
 //レビュー登録画面
 Route::get('/reviewCreate', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
