@@ -45,9 +45,9 @@ class LoginController extends Controller
     // ログアウト
     public function logout()
     {
-        // Auth::logout();//ログイン情報の破棄(ファサード)
-        return redirect()->route('/login');
-        return view('login');
+        Auth::logout();//ログイン情報の破棄(ファサード)
+        return redirect()->route('login');
+        // return view('login');
     }
 
     // Top画面
