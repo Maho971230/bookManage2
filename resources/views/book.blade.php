@@ -17,11 +17,14 @@
         <p>ISBN: {{ $book->isbn }}</p>
 
         @if($reviews->isNotEmpty())
-        @foreach($reviews as $review)
-        <p>レビュー: {{ $review->content }}</p>
-        @endforeach
+            <p>レビュー</p><form action="/postconf" method="post"><input type="submit" value="新規投稿">@csrf</form>
+            @foreach($reviews as $review)
+                <p>レビュー: {{ $review->content }}</p><p>点数: {{ $review->raiting }}</p>
+                <form action="/repost" method="post"><input type="submit" value="更新">@csrf<</form>
+                <form action="/erase" method="post"><input type="submit" value="削除">@csrf<</form>
+            @endforeach
         @else
-        <p>レビューはまだありません。</p>
+            <p>レビューはまだありません。</p>
         @endif
     </div>
 
