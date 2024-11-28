@@ -1,97 +1,77 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>新規レビュー登録</title>
-    <!-- CSSファイルへのリンク -->
-    <link rel="stylesheet" href="/assets/css/reviewCreate.css"> 
-    <!-- BootstrapのCSSを読み込む -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
-    rel="stylesheet">
-    <!-- アイコン用のFont Awesome -->
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+/* 基本のレイアウト */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-</head>
-<body>
-    <h1>新規レビュー投稿</h1>
-    {{-- 評価フォーム --}}
-    <form action="/review/postconf" method="post">
-        @csrf
-        @foreach($reviews as $review)
-            <p>書籍名{{$review->title}}</p>
-        @endforeach
-        <!--　評価　-->
-        <div class="form-group">
-            <label for="rating">評価（1～5）:</label>
-            <div class="star-rating" id="star-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-            </div>
-            <input type="hidden" name="rating" id="rating" value="0">
-        </div>
-        <!-- コメント -->
-        <div class="form-group">
-            <label for="comment">コメント:</label>
-            <textarea name="comment" id="comment" class="form-control" rows="4" placeholder="レビューを記入してください"></textarea>
-        </div>
+/* コンテナ */
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
 
+/* 見出し */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
 
-        <!-- 投稿ボタン　-->
-    <button type="submit" class="btn btn-primary btn-block">投稿</button>
+/* 星評価のスタイル */
+.star-rating {
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
 
-    </form>
-    
-    <!-- BootstrapとFont AwesomeのJavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    {{-- 書籍情報画面に戻る --}}
-    <a href="/book">戻る</a>
+.star-rating i {
+    color: black;
+    color: transparent; /* 塗りつぶしを透明に */
+    -webkit-text-stroke: 1px black; /* 枠線を追加 */
+}
 
-    <!-- 星評価のJavaScript -->
-    <script>
-    const stars = document.querySelectorAll(".star-rating i");
-    let selectedRating = -1; // 現在の選択状態を保存する変数
+.star-rating i.selected {
 
-    stars.forEach((star, index) => {
-        // マウスオーバーで星をハイライト
-        star.addEventListener("mouseover", () => {
-            for (let i = 0; i <= index; i++) {
-                stars[i].classList.add("hover");
-            }
-            for (let i = index + 1; i < stars.length; i++) {
-                stars[i].classList.remove("hover");
-            }
-        });
+    color: gold;
+}
 
-        // クリックで星の選択を確定
-        star.addEventListener("click", () => {
-            selectedRating = index; // 現在の選択を保存
-            stars.forEach(s => s.classList.remove("selected")); // 全てリセット
-            for (let i = 0; i <= selectedRating; i++) {
-                stars[i].classList.add("selected");
-            }
-        });
+/* フォーム入力 */
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: vertical;
+}
 
-        // マウスアウト時、現在の選択状態を維持
-        star.addEventListener("mouseout", () => {
-            stars.forEach((s, i) => {
-                s.classList.remove("hover");
-                if (i <= selectedRating) {
-                    s.classList.add("selected");
-                } else {
-                    s.classList.remove("selected");
-                }
-            });
-        });
-    });
-</script>
-</body>
-</html>
+/* 投稿ボタン */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
