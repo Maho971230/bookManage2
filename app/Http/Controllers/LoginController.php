@@ -53,6 +53,9 @@ class LoginController extends Controller
     // Top画面
     public function top()
     {
+        if (!Auth::check()) {
+		    return redirect()->route('login');
+		}
         return view('top');
     }
 
