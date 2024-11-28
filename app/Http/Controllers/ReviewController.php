@@ -91,19 +91,26 @@ class ReviewController extends Controller
     //レビュー編集完了
     public function update(Request $req)
     {
+        $id=$req->input('id');
         //修正対象のid値に該当するレコードを取得
-        $review = Review::find($req->id);
-        //フォームに入力されているデータをモデルに上書き
-        $review->content = $req->content;
-        $review->rating = $req->rating;
+        $review = Review::find($id);
+        if (!$review) {
+            // 見つからない場合は404エラーを返す
+            abort(404, 'レビューが見つかりません。');
+        }
+        $newContent = $req->input('content');
+        $newRating = $req->input('rating');
+        if ($newContent) {
+            $review->content = $newContent;
+        }
+
+        if ($newRating) {
+            $review->rating = $newRating;
+        }
         //モデルのデータをレーブルに保存
         $review->save();
-        $data = [
-            'id' => $req->id,
-            'content' => $req->content,
-            'rating' => $req->rating
-        ];
-        return view('review.update,$data');
+        
+        return view('review.update',['review'=>$review]);
     }
 
     //レビュー削除処理
