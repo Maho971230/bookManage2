@@ -60,6 +60,7 @@
         const stars = document.querySelectorAll("#star-rating i");
         const ratingInput = document.getElementById("rating");
         
+        let index =[1,2,3,4,5]; 
         stars.forEach((star, index) => {
             star.addEventListener("mouseover", () => {
                 for (let i = 0; i <= index; i++) {
