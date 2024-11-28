@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>著者名(キーワード)を入力してください</h1>
-    <form action="/searchList" method="post"><a href="/">トップページに戻る</a>
+    <form action="/searchList" method="post"><a href="/top">トップページに戻る</a>
         @csrf
         <input type="hidden" name="type" value="writer">
         <input type="text" name="word" required><input type="submit" value="検索">
