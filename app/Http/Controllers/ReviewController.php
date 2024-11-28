@@ -45,15 +45,16 @@ class ReviewController extends Controller
     // }
 
     //レビュー編集処理
-    public function edit($id)
+    public function edit($Request $req)
     {
-        $record = Review::find($id); // IDを元にレビューを取得
-
-        if (!$record) {
-            abort(404, 'レビューが見つかりません。'); // レコードが見つからない場合は404エラー
-        }
+        $id=$req->input(id);
+        $record = Review::find($id);
+       if (!$record) {
+        abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
+       }
 
         return view('review.edit', ['record' => $record]);
+        }
     }
 
     //レビュー編集完了
