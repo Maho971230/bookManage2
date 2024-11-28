@@ -11,7 +11,7 @@
 
 <body>
     <h1>全件表示</h1>
-    <a href="/">Topページに戻る</a>
+    <a href="/top">Topページに戻る</a>
     <table class="table">
         @csrf
         <tr>
