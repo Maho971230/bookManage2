@@ -45,7 +45,7 @@ class ReviewController extends Controller
     // }
 
     //レビュー編集処理
-    public function edit(Request $req)
+    public function edit($id)
     {
         $record = Review::find($id); // IDを元にレビューを取得
 
