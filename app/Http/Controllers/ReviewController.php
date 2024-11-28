@@ -38,18 +38,24 @@ class ReviewController extends Controller
         return view('review', $data);
     }
 
+    // //レビュー編集画面
+    // public function edit()
+    // {
+    //     return view('review.edit');
+    // }
+
     //レビュー編集処理
-    public function edit(Request $req)
+    public function edit($id)
     {
-        $id=$req->input('id');
-        $record = Review::find($id);
-       if (!$record) {
-        abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
-       }
+        $record = Review::find($id); // IDを元にレビューを取得
+
+        if (!$record) {
+            abort(404, 'レビューが見つかりません。'); // レコードが見つからない場合は404エラー
+        }
 
         return view('review.edit', ['record' => $record]);
-        }
-    
+    }
+
     public function repost(Request $req)
     {
         // idをリクエストから取得
@@ -67,14 +73,26 @@ class ReviewController extends Controller
         $newContent = $req->input('content');
         $newRating = $req->input('rating');
 
+        // 変更された内容があれば、レビューオブジェクトに設定
+        if ($newContent) {
+            $review->content = $newContent;
+        }
+
+        if ($newRating) {
+            $review->rating = $newRating;
+        }
+
         // 変更内容をビューに渡す
         return view('review.repost', [
-            'review' => $review,
-            'newContent' => $newContent,
-            'newRating' => $newRating
+            'review' => $review
         ]);
+        // return view('review.repost', [
+        //     'review' => $review,
+        //     'newContent' => $newContent,
+        //     'newRating' => $newRating
+        // ]);
     }
-    
+
 
     //レビュー編集完了
     public function update(Request $req)
