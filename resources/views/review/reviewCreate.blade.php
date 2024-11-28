@@ -18,9 +18,11 @@
 <body>
     <h1>新規レビュー投稿</h1>
     {{-- 評価フォーム --}}
-    <form action="/review/postconf" method="POST">
+    <form action="/review/postconf" method="post">
         @csrf
-        書籍名{{}}
+        @foreach($reviews as $review)
+            <p>書籍名{{$review->title}}</p>
+        @endforeach
         <!--　評価　-->
         <div class="form-group">
             <label for="rating">評価（1～5）:</label>
@@ -42,6 +44,8 @@
 
         <!-- 投稿ボタン　-->
     <button type="submit" class="btn btn-primary btn-block">投稿</button>
+
+    </form>
     
     <!-- BootstrapとFont AwesomeのJavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
