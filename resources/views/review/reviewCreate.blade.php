@@ -16,6 +16,8 @@
 
 </head>
 <body>
+    {{-- 背景 --}}
+        <div class="bg_pattern Rhombus"></div>
     <h1>新規レビュー投稿</h1>
     {{-- 評価フォーム --}}
     <form action="/postconf" method="post">
