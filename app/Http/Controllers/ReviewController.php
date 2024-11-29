@@ -48,7 +48,7 @@ class ReviewController extends Controller
     {
 
         if (!auth()->check()) {
-            return view("/")->with('error', 'ログインが必要です。');
+            return route('login')->with('error', 'ログインが必要です。');
         }
 
         $review = new Review();
