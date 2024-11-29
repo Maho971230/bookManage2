@@ -12,6 +12,8 @@ Route::get('/', function () {
     return view('login');
 });
 
+Auth::routes(); 
+
 //ログイン画面の表示
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 //ログイン処理
