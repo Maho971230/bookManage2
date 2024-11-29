@@ -18,15 +18,16 @@
 <body>
     <h1>新規レビュー投稿</h1>
     {{-- 評価フォーム --}}
-    <form action="/review/postconf" method="post">
+    <form action="/postconf" method="post">
         @csrf
         @foreach($reviews as $review)
+            <input type="hidden" name="id" value="{{ $review->id }}">
             <p>書籍名{{$review->title}}</p>
         @endforeach
         <!--　評価　-->
         <div class="form-group">
             <label for="rating">評価（1～5）:</label>
-            <div class="star-rating" id="star-rating">
+            <div class="star-rating" id="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -37,8 +38,8 @@
         </div>
         <!-- コメント -->
         <div class="form-group">
-            <label for="comment">コメント:</label>
-            <textarea name="comment" id="comment" class="form-control" rows="4" placeholder="レビューを記入してください"></textarea>
+            <label for="content">コメント:</label>
+            <textarea name="content" id="content" class="form-control" rows="4" placeholder="レビューを記入してください"></textarea>
         </div>
 
 
