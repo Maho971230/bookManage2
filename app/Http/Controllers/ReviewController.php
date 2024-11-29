@@ -20,6 +20,12 @@ class ReviewController extends Controller
     //新規登録確認画面
     public function postconf(Request $req)
     {
+        $id=$req=>input('id');
+        $record = Review::find($id);//新規登録のid値に該当するレコードを取得
+        if(!$record){
+            adort(404,'レビューが見つかりません。');
+        }
+
         return view('review.postconf');
     }
 
