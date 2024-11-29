@@ -50,6 +50,14 @@ class ReviewController extends Controller
         $review->content = $req->content;
         $review->rating = $req->rating;
 
+        // ログインしているユーザーの employee_id を設定
+    if (auth()->check()) {
+        $review->employee_id = auth()->user()->id;  // ログインしているユーザーの ID をセット
+    } else {
+        // ログインしていない場合、エラーを返す
+        return redirect()->route('login')->with('error', 'ログインが必要です。');
+    }
+
         $review->save();
 
         $data = [
