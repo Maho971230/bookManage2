@@ -27,10 +27,8 @@
         <!--　評価　-->
         @foreach($reviews as $review)
         <div class="form-group">
-            {{-- 評価ラベル --}}
-            <label for="rating-{{ $review->id }}">評価（1～5）:</label>
-            {{-- 星の評価を表示するコンテナ --}}
-            <div class="star-rating" id="rating-{{ $review->id }}">
+            <label for="rating-{{ $review->id }}">評価（1～5）:</label>{{-- 評価ラベル --}}
+            <div class="star-rating" id="rating-{{ $review->id }}">{{-- 星の評価を表示するコンテナ --}}
                 {{-- 各星の状態をサーバからの評価に戻づいて設定 --}}
                 @for ($i = 1; $i <= 5; $i++)
                     <i class="fa fa-star {{ $review->rating >= $i ? 'selected' : '' }}" data-value="{{ $i }}"></i>
@@ -67,30 +65,22 @@
         const allRatings = document.querySelectorAll(".star-rating");
 
         allRatings.forEach(ratingContainer => {
-            // 対象コンテナ内の全ての星要素を取得
-            const stars = ratingContainer.querySelectorAll("i");
-            // 対応するhidden inputを取得
-            const hiddenInput = ratingContainer.nextElementSibling; 
-            // 現在の評価をhidden inputから取得（初期値: 0）
-            let selectedRating = parseInt(hiddenInput.value) || 0;
+            const stars = ratingContainer.querySelectorAll("i");// 対象コンテナ内の全ての星要素を取得
+            const hiddenInput = ratingContainer.nextElementSibling; // 対応するhidden inputを取得
+            let selectedRating = parseInt(hiddenInput.value) || 0;// 現在の評価をhidden inputから取得（初期値: 0）
 
             // 星要素ごとのイベントを登録
             stars.forEach((star, index) => {
-                // マウスオーバー時、星を一時的にハイライト
                 star.addEventListener("mouseover", () => {
-                    // カーソルの位置まで全ての星をハイライト
                     for (let i = 0; i <= index; i++) stars[i].classList.add("hover");
-                    // カーソルの後ろの星はハイライトを外す
                     for (let i = index + 1; i < stars.length; i++) stars[i].classList.remove("hover");
                 });
 
                 // クリック時、選択した評価を確定
                 star.addEventListener("click", () => {
                     selectedRating = index + 1; // 現在の選択を保存（1から始まる値）
-                    // 全ての星を一度リセットし、選択済みのものをハイライト
                     stars.forEach((s, i) => s.classList.toggle("selected", i < selectedRating));
-                    // hidden inputに選択した評価を反映
-                    hiddenInput.value = selectedRating;
+                    hiddenInput.value = selectedRating;// 評価をhidden inputに設定
                 });
 
                 // マウスアウト時、現在の選択状態を維持
