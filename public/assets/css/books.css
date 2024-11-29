@@ -1,0 +1,35 @@
+/* topに戻るボタンを右上に配置 */
+.backToTop-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* タイトル */
+.appTitle {
+    display: flex;
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: flex-start; /* 垂直方向は上揃え */
+    text-align: center;      /* テキストを中央揃え */
+    padding-top: 50px;       /* 必要なら余白を調整 */
+}
+
+/* サブタイトル */
+.subTitle {
+    padding-top: 30px;       /* 必要なら余白を調整 */
+}
+
+.imformation {
+    padding-top: 100px;       /* 必要なら余白を調整 */
+    border: none !important;
+}
+
+/* 本の画像 */
+.bookImg {
+    width: 400px;
+    height: 300px;
+}
+
+.imgCell {
+    border-bottom: 1px solid #000;
+}
