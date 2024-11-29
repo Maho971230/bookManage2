@@ -20,63 +20,70 @@ class ReviewController extends Controller
     //新規登録確認画面
     public function postconf(Request $req)
     {
-        $id = $req->input('id');
-        $review = Review::find($id); //新規登録のid値に該当するレコードを取得
+                // フォームから送信された評価値を取得
+            $reviewData = $req->input('ratings');
 
-        // フォームから送られてきたデータを取得
-        $content = $req->input('content');
-        $rating = $req->input('rating');
+            // レビューをデータベースに保存する（例：Reviewモデルを使用）
+            foreach ($reviewData as $reviewId => $rating) {
+                $review = Review::find($reviewId);
+                if ($review) {
+                    $review->rating = $rating; // 評価値を保存
+                    $review->save();
+                }
+            }
 
-        if ($content) {
-            $review->content = $content;
-        }
+            // 次のページにリダイレクト
+            return redirect('/nextPage')->with('status', '評価が保存されました');
+        // $id = $req->input('id');
+        // $review = Review::find($id);//新規登録のid値に該当するレコードを取得
 
-        if ($rating) {
-            $review->rating = $rating;
-        }
+        // // フォームから送られてきたデータを取得
+        // $content = $req->input('content');
+        // $rating = $req->input('rating');
 
-        // 変更内容をビューに渡す
-        return view('review.postconf', [
-            'review' => $review
-        ]);
+        // if ($content) {
+        //     $review->content = $content;
+        // }
 
-        // return view('review.postconf');
+        // if ($rating) {
+        //     $review->rating = $rating;
+        // }
+
+        // // 変更内容をビューに渡す
+        // return view('review.postconf', [
+        //     'review' => $review
+        // ]);
+
+        // // return view('review.postconf');
     }
 
     //新規登録完了画面
     public function reviewStore(Request $req)
     {
-
-        if (!auth()->check()) {
-            return route('login')->with('error', 'ログインが必要です。');
-        }
-
         $review = new Review();
         $review->content = $req->content;
         $review->rating = $req->rating;
-        $review->employee_id=auth()->user()->id;
 
         $review->save();
-
-        // $data = [
-        //     'content' => $req->content,
-        //     'rating' => $req->rating
-        // ];
-        return view('review.reviewStore', ['review'=>$review]);
+        $data = [
+            'content' => $req->content,
+            'rating' => $req->rating
+        ];
+        return view('review', $data);
     }
 
     //レビュー編集処理
     public function edit(Request $req)
     {
-        $id = $req->input('id');
+        $id=$req->input('id');
         $record = Review::find($id);
-        if (!$record) {
-            abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
-        }
+       if (!$record) {
+        abort(404, 'レビューが見つかりません。'); // レビューが見つからない場合
+       }
 
         return view('review.edit', ['record' => $record]);
-    }
-
+        }
+    
     public function repost(Request $req)
     {
         // idをリクエストから取得
@@ -113,12 +120,12 @@ class ReviewController extends Controller
         //     'newRating' => $newRating
         // ]);
     }
-
+    
 
     //レビュー編集完了
     public function update(Request $req)
     {
-        $id = $req->input('id');
+        $id=$req->input('id');
         //修正対象のid値に該当するレコードを取得
         $review = Review::find($id);
         if (!$review) {
@@ -136,8 +143,8 @@ class ReviewController extends Controller
         }
         //モデルのデータをレーブルに保存
         $review->save();
-
-        return view('review.update', ['review' => $review]);
+        
+        return view('review.update',['review'=>$review]);
     }
 
     //レビュー削除処理
@@ -145,18 +152,18 @@ class ReviewController extends Controller
     {
         //削除対象のid値を取得
         $id = $req->input('id');
-        $review = Review::find($id);
+        $review=Review::find($id);
         if (!$review) {
             // 見つからない場合は404エラーを返す
             abort(404, 'レビューが見つかりません。');
         }
-        return view('review.erase', ['review' => $review]);
+        return view('review.erase', ['review'=>$review]);
     }
 
     //レビュー削除完了
     public function delete(Request $req)
     {
-        $id = $req->input('id');
+        $id=$req->input('id');
         //削除対象のdi値に該当するレコードを取得
         $review = Review::find($id);
         if (!$review) {
@@ -165,6 +172,6 @@ class ReviewController extends Controller
         }
         //データを削除するメソッドを実行
         $review->delete();
-        return view('review.delete', ['review' => $review]);
+        return view('review.delete', ['review'=>$review]);
     }
 }
