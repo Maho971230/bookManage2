@@ -27,11 +27,16 @@
             <br>
             評価:
             <div class="star-rating">
+                @php
+                    $rating = old('rating', $review->rating);  <!-- old関数で以前の入力を取得 -->
+                @endphp
                 @for ($i = 1; $i <= 5; $i++)
-                    <i class="fa fa-star {{ $review->rating >= $i ? 'text-warning' : 'text-muted' }}"></i>
+                    <i class="fa fa-star {{ $rating >= $i ? 'text-warning' : 'text-muted' }}"></i>
                 @endfor
-            </div>      
+            </div>     
             <br>
+            <!-- 評価を送信する隠しフィールド -->
+            <input type="hidden" name="rating" value="{{ old('rating', $review->rating) }}">
             
             <input type="submit" value="登録" class="btn-primary">
     </form>
