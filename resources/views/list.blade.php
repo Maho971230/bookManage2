@@ -25,9 +25,9 @@
             @csrf
             <thead>
                 <tr class="table-active">
-                    <th scope="col">番号</th>
                     <th scope="col">書籍名</th>
                     <th scope="col">著書名</th>
+                    <th scope="col">出版社</th>
                     <th scope="col">詳細</th>
                 </tr>
             </thead>
