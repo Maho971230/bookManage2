@@ -13,11 +13,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <p>レビュー新規登録</p>
-    <h1>以下の内容で登録してもよろしいですか</h1>
+    <h1>レビュー新規登録</h1>
+    <h2>以下の内容で登録してもよろしいですか</h2>
     <form action="{{route('reviewStore')}}" method="post">
             @csrf
-            <h1>確認内容</h1>
+            <h3>確認内容</h3>
             <input type="hidden" name="id" value="{{$review->id}}">
             <br>
             <p>書籍名:{{ $review -> book -> title}}</p>
@@ -28,17 +28,15 @@
             評価:
             <div class="star-rating">
                 @php
-                    $rating = old('rating', $review->rating);  <!-- old関数で以前の入力を取得 -->
+                    $rating = old('rating', $review->rating ?? 1);
                 @endphp
                 @for ($i = 1; $i <= 5; $i++)
                     <i class="fa fa-star {{ $rating >= $i ? 'text-warning' : 'text-muted' }}"></i>
                 @endfor
             </div>     
             <br>
-            <!-- 評価を送信する隠しフィールド -->
-            <input type="hidden" name="rating" value="{{ old('rating', $review->rating) }}">
-            
-            <input type="submit" value="登録" class="btn-primary">
+            <input type="hidden" name="rating" value="{{ $rating }}">            
+            <button type="submit" class="btn btn-primary mt-3">登録</button>
     </form>
     <a href="{{route('top')}}" class="btn btn-secondary">戻る</a>
 </body>
