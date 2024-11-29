@@ -1,3 +1,21 @@
+/* 背景 */
+.bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: brown;
+    opacity: 0.4;
+    z-index: -1;
+  }
+  .Rhombus {
+    background-image:  linear-gradient(135deg, #ffc107 25%, transparent 25%), linear-gradient(225deg, #ffc107 25%, transparent 25%), linear-gradient(45deg, #ffc107 25%, transparent 25%), linear-gradient(315deg, #ffc107 25%, #ffe9a7 25%);
+    background-position:  20px 0, 20px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+  }
+
 /* 基本のレイアウト */
 body {
     font-family: Arial, sans-serif;
@@ -5,7 +23,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* 縦方向の中央揃え */
+    flex-direction: column; /* 縦方向に並べる */
     align-items: center;
     height: 100vh;
 }
@@ -26,6 +45,10 @@ h1 {
     text-align: center;
     font-size: 24px;
     color: #333;
+    /* 背景に色を入れ、上に二重線を引く */
+    padding: 1rem 2rem;
+    border-bottom: 6px double #000;
+    background: #f4f4f4;
 }
 
 /* 星評価のスタイル */
@@ -43,7 +66,6 @@ h1 {
 }
 
 .star-rating i.selected {
-
     color: gold;
 }
 
@@ -62,7 +84,7 @@ textarea {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
