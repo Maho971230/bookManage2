@@ -33,7 +33,8 @@ class LoginController extends Controller
         if ($employee && Hash::check($req->password, $employee->password)) {
             // ログイン成功
             Auth::login($employee);//ログイン状態の維持(ファサード)
-            return redirect()->route('top');
+            // return redirect()->route('top');
+            return view('top');
         }
 
         // エラー文
@@ -46,11 +47,11 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();//ログイン情報の破棄(ファサード)
-        return redirect()->route('login');
-        // return view('login');
+        // return redirect()->route('login');
+        return view('login');
     }
 
-    // Top画面
+    // 
     public function top()
     {
         if (!Auth::check()) {
