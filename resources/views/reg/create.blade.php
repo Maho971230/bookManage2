@@ -28,7 +28,8 @@
     <p><strong>出版社:</strong> <span id="result-publisher"></span></p>
     <p><strong>価格:</strong> <span id="result-price"></span></p>
 </div>
-    <button id="redirectBtn" class="btn btn-primary">外部リンクに移動</button>
+
+    <button id="redirectBtn" class="btn btn-primary">Amazon</button>
 
     <!-- JavaScript でリダイレクト -->
     <script>
@@ -37,7 +38,9 @@
             window.location.href = 'https://www.amazon.co.jp/?&tag=hydraamazonav-22&ref=pd_sl_8eaqjij3p0_e&adgrpid=157529193801&hvpone=&hvptwo=&hvadid=675152705458&hvpos=&hvnetw=g&hvrand=6870138715292486806&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9198198&hvtargid=kwd-893523692&hydadcr=27920_14701882&gad_source=1';
         });
     </script>
-    <button id="redirectBtn" class="btn btn-primary">Amazon</button>
+
+
+    <button id="redirectBtn" class="btn btn-primary">楽天市場</button>
 
 <!-- JavaScript でリダイレクト -->
 <script>
@@ -46,7 +49,7 @@
         window.location.href = 'https://www.rakuten.co.jp/';
     });
 </script>
-<button id="redirectBtn" class="btn btn-primary">楽天市場</button>
+<button id="redirectBtn" class="btn btn-primary">Yahooショッピング</button>
 
     <!-- JavaScript でリダイレクト -->
     <script>
@@ -55,7 +58,6 @@
             window.location.href = 'https://shopping.yahoo.co.jp/?sc_e=ad_listing_gpmax_maxg&gad_source=1&gclid=CjwKCAiAxqC6BhBcEiwAlXp451bkWIIBuwmb_kJoi9GxnatYLgrg1Rwj35Al4KlDUhBcy60F1713eBoCtAsQAvD_BwE';
         });
     </script>
-    <button id="redirectBtn" class="btn btn-primary">Yahooショッピング</button>
 
 
 
