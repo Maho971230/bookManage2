@@ -29,11 +29,11 @@
     <p><strong>価格:</strong> <span id="result-price"></span></p>
 </div>
 
-    <button id="openbdBtn" class="btn btn-primary">Amazon</button>
+    <button id="openbdBtn" class="btn btn-primary">openBD</button>
 
     <!-- JavaScript でリダイレクト -->
     <script>
-        document.getElementById("amazonBtn").addEventListener("click", function() {
+        document.getElementById("openbdBtn").addEventListener("click", function() {
             // 外部リンクにリダイレクト
             window.location.href = 'https://openbd.jp/';
         });
