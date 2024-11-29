@@ -29,31 +29,29 @@
     <p><strong>価格:</strong> <span id="result-price"></span></p>
 </div>
 
-    <button id="redirectBtn" class="btn btn-primary">Amazon</button>
+    <button id="amazonBtn" class="btn btn-primary">Amazon</button>
 
     <!-- JavaScript でリダイレクト -->
     <script>
-        document.getElementById("redirectBtn").addEventListener("click", function() {
+        document.getElementById("amazonBtn").addEventListener("click", function() {
             // 外部リンクにリダイレクト
             window.location.href = 'https://www.amazon.co.jp/?&tag=hydraamazonav-22&ref=pd_sl_8eaqjij3p0_e&adgrpid=157529193801&hvpone=&hvptwo=&hvadid=675152705458&hvpos=&hvnetw=g&hvrand=6870138715292486806&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9198198&hvtargid=kwd-893523692&hydadcr=27920_14701882&gad_source=1';
         });
     </script>
 
-
-    <button id="redirectBtn" class="btn btn-primary">楽天市場</button>
-
+    <button id="rakutenBtn" class="btn btn-primary">楽天市場</button>
 <!-- JavaScript でリダイレクト -->
 <script>
-    document.getElementById("redirectBtn").addEventListener("click", function() {
+    document.getElementById("rakutenBtn").addEventListener("click", function() {
         // 外部リンクにリダイレクト
         window.location.href = 'https://www.rakuten.co.jp/';
     });
 </script>
-<button id="redirectBtn" class="btn btn-primary">Yahooショッピング</button>
 
+<button id="yahooBtn" class="btn btn-primary">Yahooショッピング</button>
     <!-- JavaScript でリダイレクト -->
     <script>
-        document.getElementById("redirectBtn").addEventListener("click", function() {
+        document.getElementById("yahooBtn").addEventListener("click", function() {
             // 外部リンクにリダイレクト
             window.location.href = 'https://shopping.yahoo.co.jp/?sc_e=ad_listing_gpmax_maxg&gad_source=1&gclid=CjwKCAiAxqC6BhBcEiwAlXp451bkWIIBuwmb_kJoi9GxnatYLgrg1Rwj35Al4KlDUhBcy60F1713eBoCtAsQAvD_BwE';
         });
