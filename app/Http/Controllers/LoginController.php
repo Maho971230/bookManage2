@@ -54,9 +54,10 @@ class LoginController extends Controller
     // 
     public function top()
     {
-        if (!Auth::check()) {
-		    return redirect()->route('login');
-		}
+        // if (!Auth::check()) {
+		//     // return redirect()->route('login');
+        //     return view('login');
+		// }
         return view('top');
     }
 
