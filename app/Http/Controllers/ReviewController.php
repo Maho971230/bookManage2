@@ -46,6 +46,11 @@ class ReviewController extends Controller
     //新規登録完了画面
     public function reviewStore(Request $req)
     {
+
+        if (!auth()->check()) {
+            return view("/")->with('error', 'ログインが必要です。');
+        }
+
         $review = new Review();
         $review->content = $req->content;
         $review->rating = $req->rating;
