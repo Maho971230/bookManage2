@@ -7,7 +7,7 @@
 
 /* ログアウトボタンのスタイルを調整（オプション） */
 .logout-container form input[type="submit"] {
-    background-color: #4CAF50; 
+    background-color: green; 
     color: white;
     border: none;
     padding: 8px 16px;
@@ -17,7 +17,7 @@
 }
 
 .logout-container form input[type="submit"]:hover {
-    background-color: #337435; /* ホバー時の色 */
+    background-color: #275828; /* ホバー時の色 */
 }
 
 /* タイトル */
