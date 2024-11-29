@@ -8,6 +8,9 @@
     {{-- bootstrapの読み込み --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    {{-- FontAwesome for stars　読み込み --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <p>レビュー新規登録</p>
@@ -23,7 +26,11 @@
             <p>{{ old('content', $review->content) }}</p>
             <br>
             評価:
-            <p>{{ old('rating', $review->rating) }}</p>            
+            <div class="star-rating">
+                @for ($i = 1; $i <= 5; $i++)
+                    <i class="fa fa-star {{ $review->rating >= $i ? 'text-warning' : 'text-muted' }}"></i>
+                @endfor
+            </div>      
             <br>
             
             <input type="submit" value="登録" class="btn-primary">
