@@ -20,6 +20,15 @@
         <input type="text" id="isbn" class="form-control" required>
         <button id="searchBtn" class="btn btn-primary mt-3">検索</button>
     </div>
+    <div id="result" style="display: none; margin-top: 20px;">
+    <h3>検索結果</h3>
+    <p><strong>ISBN:</strong> <span id="result-isbn"></span></p>
+    <p><strong>タイトル:</strong> <span id="result-title"></span></p>
+    <p><strong>著者:</strong> <span id="result-writer"></span></p>
+    <p><strong>出版社:</strong> <span id="result-publisher"></span></p>
+    <p><strong>価格:</strong> <span id="result-price"></span></p>
+</div>
+
 
     <script>
         document.getElementById('searchBtn').addEventListener('click', async () => {
@@ -47,5 +56,6 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
