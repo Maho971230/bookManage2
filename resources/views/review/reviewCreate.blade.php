@@ -28,13 +28,14 @@
         <div class="form-group">
             <label for="rating">評価（1～5）:</label>
             <div class="star-rating" id="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <!-- サーバーから送られる評価に基づいてクラスを設定 -->
+                <i class="fa fa-star {{ $review->rating >= 1 ? 'selected' : '' }}" data-value="1"></i>
+                <i class="fa fa-star {{ $review->rating >= 2 ? 'selected' : '' }}" data-value="2"></i>
+                <i class="fa fa-star {{ $review->rating >= 3 ? 'selected' : '' }}" data-value="3"></i>
+                <i class="fa fa-star {{ $review->rating >= 4 ? 'selected' : '' }}" data-value="4"></i>
+                <i class="fa fa-star {{ $review->rating >= 5 ? 'selected' : '' }}" data-value="5"></i>
             </div>
-            <input type="hidden" name="rating" id="rating" value="0">
+            <input type="hidden" name="rating" id="rating" value="{{ $review->rating ?? 0 }}">
         </div>
         <!-- コメント -->
         <div class="form-group">
