@@ -17,7 +17,7 @@
     <div class="subTitle">
         <h2>全件表示</h2>
     </div>
-    <div class="logout-container">
+    <div class="backToTop-container">
         <a href="/top" class="btn btn-success">Topページに戻る</a>
     </div>
     <div class="table">
