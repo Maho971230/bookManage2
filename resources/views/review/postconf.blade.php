@@ -12,10 +12,10 @@
 <body>
     <p>レビュー新規登録</p>
     <h1>以下の内容で登録してもよろしいですか</h1>
-    <form action="{{route('store')}}" method="post">
-        @csrf
+    <form action="{{route('reviewStore')}}" method="post">
+            @csrf
             <h1>確認内容</h1>
-            <input type="hidden" name="id" value="{{$record->id}}">
+            <input type="hidden" name="id" value="{{$review->id}}">
             <br>
             <p>書籍名:{{ $review -> book -> title}}</p>
             <br>
@@ -27,7 +27,7 @@
             <br>
             
             <input type="submit" value="登録" class="btn-primary">
-        </form>
-        <a href="{{route('top')}}" class="btn btn-secondary">戻る</a>
+    </form>
+    <a href="{{route('top')}}" class="btn btn-secondary">戻る</a>
 </body>
 </html>
