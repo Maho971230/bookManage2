@@ -10,59 +10,56 @@ use App\Models\Review;
 class ReviewController extends Controller
 {
     //新規レビュー登録画面
-    public function reviewCreate(Request $req)
+    public function reviewCreate(Request $req,$book_id)
     {
-        $id = $req->book_id;
-        $reviews = Review::where('book_id', $id)->with('book')->get();
-        return view('review.reviewCreate', ['reviews' => $reviews]);
+        $book = Book::with('reviews')->findOrFail($book_id);
+		return view('review.reviewCreate', ['book' => $book]);
     }
 
     //新規登録確認画面
     public function postconf(Request $req)
     {
-        $id = $req->input('id');
-        $review = Review::find($id); //新規登録のid値に該当するレコードを取得
-
-        // フォームから送られてきたデータを取得
-        $content = $req->input('content');
-        $rating = $req->input('rating');
-
-        if ($content) {
-            $review->content = $content;
-        }
-
-        if ($rating) {
-            $review->rating = $rating;
-        }
-
-        // 変更内容をビューに渡す
-        return view('review.postconf', [
-            'review' => $review
+        $validated = $req->validate([
+            'book_id' => 'required|exists:books,id',
+            'content' => 'required|string|max:255',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
-
-        // return view('review.postconf');
+    
+        $book = Book::find($validated['book_id']);
+    
+        return view('review.postconf', [
+            'content' => $validated['content'],
+            'rating' => $validated['rating'],
+            'book' => $book,
+        ]);
     }
 
     //新規登録完了画面
     public function reviewStore(Request $req)
     {
 
-        if (!auth()->check()) {
-            return route("login")->with('error', 'ログインが必要です。');
-        }
-
+        $messages = [
+            'content.required' => 'レビュー内容は必須です。',
+            'rating.required'  => '評価は必須です。',
+            'rating.integer'   => '評価は整数値で入力してください。',
+            'rating.min'       => '評価は1以上である必要があります。',
+            'rating.max'       => '評価は5以下である必要があります。',
+        ];
+    
+            $validated = $req->validate([
+            'book_id' => 'required|exists:books,id',
+            'content' => 'required|string|max:255',
+            'rating' => 'required|integer|min:1|max:5',
+            ]、$messages);
+    
         $review = new Review();
-        $review->content = $req->content;
-        $review->rating = $req->rating;
-        $review->employee_id=auth()->user()->id;
-
+        $review->book_id = $validated['book_id'];
+        $review->content = $validated['content'];
+        $review->rating = $validated['rating'];
+        $review->employee_id = auth()->id(); // ログイン中のユーザーを設定
         $review->save();
-
-        // $data = [
-        //     'content' => $req->content,
-        //     'rating' => $req->rating
-        // ];
-        return view('review.reviewStore', ['review'=>$review]);
+    
+        return view('review.reviewStore', ['review' => $review]);
     }
 
     //レビュー編集処理
