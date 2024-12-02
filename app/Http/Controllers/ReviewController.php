@@ -12,8 +12,8 @@ class ReviewController extends Controller
     //新規レビュー登録画面
     public function reviewCreate(Request $req,$book_id)
     {
-        $book = Book::with('reviews')->findOrFail($book_id);
-		return view('review.reviewCreate', ['book' => $book]);
+        $books = Book::with('reviews')->findOrFail($book_id);
+		return view('review.reviewCreate', ['books' => $books, 'reviews' => $books->reviews]);
     }
 
     //新規登録確認画面
