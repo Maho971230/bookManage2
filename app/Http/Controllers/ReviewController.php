@@ -50,7 +50,7 @@ class ReviewController extends Controller
             'book_id' => 'required|exists:books,id',
             'content' => 'required|string|max:255',
             'rating' => 'required|integer|min:1|max:5',
-            ]、$messages);
+            ],$messages);
     
         $review = new Review();
         $review->book_id = $validated['book_id'];
