@@ -8,6 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <style>
         body { width:600px; margin: 0 auto; }
+        #result { display: none; margin-top: 20px; }
+        #registerBtn { display: none; }
     </style>
 </head>
 <body>
@@ -59,11 +61,26 @@
                 document.getElementById('result-publisher').textContent = data.publisher;
                 document.getElementById('result-price').textContent = data.price;
                 document.getElementById('result').style.display = 'block';
+                document.getElementById('registerBtn').style.display = 'inline-block';
 
             } catch (error) {
                 alert(error.response.data.error || 'エラーが発生しました');
             }
         });
+        document.getElementById('registerBtn').addEventListener('click', async () => {
+            const isbn = document.getElementById('result-isbn').textContent;
+            const title = document.getElementById('result-title').textContent;
+            const writer = document.getElementById('result-writer').textContent;
+            const publisher = document.getElementById('result-publisher').textContent;
+            const price = document.getElementById('result-price').textContent;
+
+            try {
+                const response = await axios.post('/store', { isbn, title, writer, publisher, price });
+                alert('登録が完了しました。');
+            } catch (error) {
+                alert('登録中にエラーが発生しました。');
+            }
+        }); 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
